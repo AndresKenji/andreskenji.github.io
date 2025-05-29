@@ -1,0 +1,13 @@
+site_name: Orodriguez
+
+# Page tree: refer to mkdocs documentation
+nav:
+- Home: index.md
+- Current project:
+  - "Health open data catalog": catalogue-open-data-sante/index.md
+- Previous data science projects:
+  - "Predict Health Outcomes of Horses": horse_health_prediction_project/readme.md
+  
+- Previous skills based projects:
+  - "Predict US stocks closing movements": US_stocks_prediction_project/readme.md
+  
