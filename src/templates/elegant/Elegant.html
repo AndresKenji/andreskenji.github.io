@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thomas Davis</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./styles.css">
+  <script data-cfasync="false"
+    nonce="712f0198-c198-4cc0-8d2a-b3d5a5919542">try { (function (w, d) { !function (bz, bA, bB, bC) { if (bz.zaraz) console.error("zaraz is loaded twice"); else { bz[bB] = bz[bB] || {}; bz[bB].executed = []; bz.zaraz = { deferred: [], listeners: [] }; bz.zaraz._v = "5853"; bz.zaraz._n = "712f0198-c198-4cc0-8d2a-b3d5a5919542"; bz.zaraz.q = []; bz.zaraz._f = function (bD) { return async function () { var bE = Array.prototype.slice.call(arguments); bz.zaraz.q.push({ m: bD, a: bE }) } }; for (const bF of ["track", "set", "debug"]) bz.zaraz[bF] = bz.zaraz._f(bF); bz.zaraz.init = () => { var bG = bA.getElementsByTagName(bC)[0], bH = bA.createElement(bC), bI = bA.getElementsByTagName("title")[0]; bI && (bz[bB].t = bA.getElementsByTagName("title")[0].text); bz[bB].x = Math.random(); bz[bB].w = bz.screen.width; bz[bB].h = bz.screen.height; bz[bB].j = bz.innerHeight; bz[bB].e = bz.innerWidth; bz[bB].l = bz.location.href; bz[bB].r = bA.referrer; bz[bB].k = bz.screen.colorDepth; bz[bB].n = bA.characterSet; bz[bB].o = (new Date).getTimezoneOffset(); if (bz.dataLayer) for (const bJ of Object.entries(Object.entries(dataLayer).reduce(((bK, bL) => ({ ...bK[1], ...bL[1] })), {}))) zaraz.set(bJ[0], bJ[1], { scope: "page" }); bz[bB].q = []; for (; bz.zaraz.q.length;) { const bM = bz.zaraz.q.shift(); bz[bB].q.push(bM) } bH.defer = !0; for (const bN of [localStorage, sessionStorage]) Object.keys(bN || {}).filter((bP => bP.startsWith("_zaraz_"))).forEach((bO => { try { bz[bB]["z_" + bO.slice(7)] = JSON.parse(bN.getItem(bO)) } catch { bz[bB]["z_" + bO.slice(7)] = bN.getItem(bO) } })); bH.referrerPolicy = "origin"; bH.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bz[bB]))); bG.parentNode.insertBefore(bH, bG) };["complete", "interactive"].includes(bA.readyState) ? zaraz.init() : bz.addEventListener("DOMContentLoaded", zaraz.init) } }(w, d, "zarazData", "script"); window.zaraz._p = async dq => new Promise((dr => { if (dq) { dq.e && dq.e.forEach((ds => { try { const dt = d.querySelector("script[nonce]"), du = dt?.nonce || dt?.getAttribute("nonce"), dv = d.createElement("script"); du && (dv.nonce = du); dv.innerHTML = ds; dv.onload = () => { d.head.removeChild(dv) }; d.head.appendChild(dv) } catch (dw) { console.error(`Error executing script: ${ds}\n`, dw) } })); Promise.allSettled((dq.f || []).map((dx => fetch(dx[0], dx[1])))) } dr() })); zaraz._p({ "e": ["(function(w,d){})(window,document)"] }); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+</head>
+
+<body itemscope="itemscope" itemtype="http://schema.org/Person">
+  <div class="container-fluid">
+    <div class="row main clearfix"><a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i
+          class="icon-bars"></i><span class="close-icon">&times;</span></a>
+      <nav class="floating-nav js-floating-nav">
+        <ul class="list-unstyled">
+          <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
+          <li><a href="#work-experience"><i class="mr-10 icon-office"></i>Work Experience</a></li>
+          <li><a href="#projects-experience"><i class="mr-10 icon-code"></i>Projects Experience</a></li>
+          <li><a href="#skills"><i class="mr-10 icon-tools"></i>Skills</a></li>
+          <li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li>
+          <li><a href="#awards"><i class="mr-10 icon-trophy"></i>Awards</a></li>
+          <li><a href="#interests"><i class="mr-10 icon-heart"></i>Interests</a></li>
+          <li><a href="#references"><i class="mr-10 icon-thumbs-up"></i>References</a></li>
+        </ul>
+      </nav>
+      <section class="col-md-3 card-wrapper profile-card-wrapper affix">
+        <div class="card profile-card"><span class="profile-pic-container">
+            <div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100"
+                alt="Thomas Davis"
+                src="https://s.gravatar.com/avatar/cff733cf90823edd218a834980379c61?s=100&amp;r=pg&amp;d=mm"
+                itemprop="image" /></div>
+            <div class="name-and-profession text-center">
+              <h3 itemprop="name"><b>Thomas Davis</b></h3>
+              <h5 class="text-muted" itemprop="jobTitle">Web Developer</h5>
+            </div>
+          </span>
+          <hr />
+          <div class="contact-details clearfix">
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span
+                class="info">Melbourne, AU</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-phone"></i></span><span class="info"
+                itemprop="telephone">041102102</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-mail"></i></span><span class="info"><a
+                  class="link-disguise" href="mailto:thomasalwyndavis@gmail.com"
+                  itemprop="email">thomasalwyndavis@gmail.com</a></span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-link"></i></span><span class="info"><a
+                  href="https://lordajax.com" target="_blank">https://lordajax.com</a></span></div>
+            <div class="detail"><span class="icon" title="Languages I speak"><i
+                  class="icon fs-lg icon-language"></i></span><span class="info">English</span></div>
+          </div>
+          <hr />
+          <div class="social-links text-center">
+            <div><a class="fs-2x social-link link-twitter icon-twitter" href="https://twitter.com/ajaxdavis"
+                target="_blank" data-toggle="tooltip" title="Thomas Davis on twitter"></a><a
+                class="fs-2x social-link link-github icon-github" href="https://github.com/thomasdavis" target="_blank"
+                data-toggle="tooltip" title="Thomas Davis on github"></a></div>
+          </div>
+        </div>
+      </section>
+      <section class="col-md-9 card-wrapper pull-right">
+        <div class="card background-card">
+          <h4 class="text-uppercase">Background</h4>
+          <hr />
+          <div class="background-details">
+            <div class="detail" id="about">
+              <div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">About</h4>
+                <div class="card card-nested">
+                  <div class="content mop-wrapper" itemprop="description">
+                    <p>I'm a full stack web developer who can build apps from the ground up. I've worked mostly at
+                      startups so I am used to wearing many hats. I am a very product focused developer who prioritizes
+                      user feedback first and foremost. I'm generally very flexible when investigating new roles.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="work-experience">
+              <div class="icon"><i class="fs-lg icon-office"></i><span class="mobile-title">Work Experience</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">Work Experience</h4>
+                <ul class="list-unstyled clear-margin">
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>Product
+                          Engineer</strong>,&nbsp;Misc Companies</p>
+                      <p class="text-muted"><small><span class="space-right">May, 2020 - Present</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Over the past several years, I've worked at various roles and companies. Mostly early stage
+                          startups, doing full stack product development.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>React / Next</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Node / Laravel</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>LLM's</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Diagrams / Canvas</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Senior Javascript Developer</strong>,&nbsp;Tokenized 2
+                      </p>
+                      <p class="text-muted"><small><span class="space-right">May, 2020 - May, 2021</span><span><i
+                              class="icon-clock mr-5"></i>1 year</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Tokenized is a Bitcoin wallet for issuing, managing and trading digital tokens. I built out
+                          the front end which was packaged as an electron app. It was a difficult frontend to build
+                          because we store the users keys locally and used them to sign transactions and contracts.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>React</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Redux</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>SCSS</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Product</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Senior Javascript Developer</strong>,&nbsp;Blockbid</p>
+                      <p class="text-muted"><small><span class="space-right">Mar, 2018 - Jan, 2020</span><span><i
+                              class="icon-clock mr-5"></i>1 year 10 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Blockbid is an Australian crypto currency exchange. I started off on the frontend but
+                          eventually became lead tech and worked on every moving piece of the exchange. I really enjoyed
+                          working with liquidity providers and connecting their platforms to help us achieve liquid
+                          markets.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>React, Apollo, Styled Components</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Node.js / Rails</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Docker / Heroku / GCP</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Used Figma for design and UX work</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Optimizing markets with tens of millions of rows using SQL.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Developer</strong>,&nbsp;Listium</p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2016 - Jan, 2018</span><span><i
+                              class="icon-clock mr-5"></i>2 years</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Built a very large and complex React / Redux application. It works on all platforms and has
+                          IOS/Android builds due to it being a PWA. (wrapped it in React Native though only implementing
+                          a WebView)</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Worked with Postgres, Redis and Dynamodb for storage.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Hosted on a mixture of Heroku Apps and EC2 servers.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Caching by Fastly and Cloudflare</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Hybrid app supported on all platforms</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Developer</strong>,&nbsp;Electronic Frontier Foundation
+                      </p>
+                      <p class="text-muted"><small><span class="space-right">Apr, 2014 - Jan, 2016</span><span><i
+                              class="icon-clock mr-5"></i>1 year 9 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Hired to take EFF's campaigning to the next level by building an action centre in Ruby on
+                          Rails. The action centre is built around some large open source tools that lower the barrier
+                          to entry when contacting congress.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Developed new tools for contacting congress</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Brainstormed campaign ideas to raise maximum awareness about issues</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Lots of social networking integration</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>CTO</strong>,&nbsp;Earbits</p>
+                      <p class="text-muted"><small><span class="space-right">Mar, 2013 - Jan, 2015</span><span><i
+                              class="icon-clock mr-5"></i>1 year 10 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Started off as a front end developer but took on the role of CTO in early 2013. The
+                          application frontend is built with Javascript and organized as a single page application that
+                          talks to a collection of Rails web servers which are connected to MongoDB.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Managed a small team of developers and designers</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Built the entire frontend application with Backbone.js</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Transferred all of the infrastructure from Heroku to AWS</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>Founder</strong>,&nbsp;JSON Resume
+                      </p>
+                      <p class="text-muted"><small><span class="space-right">Apr, 2014 - Present</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>JSON Resume is a community driven open source initiative to create a JSON based standard for
+                          resumes. There is no reason why there can't be a common standard for writing a resume that can
+                          be extended with an ecosystem of open source tools.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>This resume is built with JSON Resume</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Over 3000 stars on Github</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Community developed themes</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Tens of thousands of users</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Developer</strong>,&nbsp;Taskforce.is</p>
+                      <p class="text-muted"><small><span class="space-right">Jun, 2013 - Jan, 2016</span><span><i
+                              class="icon-clock mr-5"></i>2 years 7 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Worked on many politically charged campaigns against mass surveillance. Not only technically
+                          challenging work but also a lot of networking and getting my hands dirty with politics. Our
+                          biggest project was &quot;TheDayWeFightBack&quot;..</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Generated 37,000,000 banner views</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>100, 000 phone calls to congress</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>500, 000 emails</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>250, 000 signatures</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>Co-Founder</strong>,&nbsp;Drone
+                        Hire</p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2013 - Present</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>An international directory of civilian drone / UAV operators for hire. Services include
+                          aerial photography, aerial video, mapping, surveying, precision agriculture, real estate
+                          photography, remote inspections and infrared imaging. Our plan is to be the place to go when
+                          looking for UAV/Drone services. The website is built in Backbone.js and API is built with
+                          Node.js and Postgres.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>The site and blog combined have managed to receive over 200,000 visitors in 2014.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Founder</strong>,&nbsp;BackboneTutorials.com</p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2011 - Jan, 2014</span><span><i
+                              class="icon-clock mr-5"></i>3 years</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>I write tutorials and blog post regarding the popular Javascript framework Backbone.js. The
+                          tutorials cover a range of topics regarding front end development aimed at beginners, experts
+                          and anyone in between.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Over two million unique visitors a year</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>25,000+ ebook downloads</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>300,000+ Youtube views</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Front-end Developer</strong>,&nbsp;Ephox</p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2011 - Jun, 2012</span><span><i
+                              class="icon-clock mr-5"></i>1 year 5 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Ephox is a worldwide company who is heavily involved with the development of TinyMce and
+                          enterprise editors. My primary role included building front-end widgets and applications.
+                          Worked on a major product using Backbone.js as a base. Heavily involved in UI/UX design and
+                          wire-framing. Also spend a lot of time designing API specifications and documentation.</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail" id="projects-experience">
+              <div class="icon"><i class="fs-lg icon-code"></i><span class="mobile-title">Projects Experience</span>
+              </div>
+              <div class="info">
+                <h4 class="title text-uppercase">Projects Experience</h4>
+                <ul class="list-unstyled clear-margin">
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>JSON Resume</strong></p>
+                      <p class="text-muted"><small><span class="space-right">Apr, 2014 - Present</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>JSON Resume is a community driven open source initiative to create a JSON based standard for
+                          resumes. There is no reason why there can't be a common standard for writing a resume that can
+                          be extended with an ecosystem of open source tools.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>This resume is built with JSON Resume</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Over 3000 stars on Github</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Community developed themes</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Tens of thousands of users</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>Cdnjs</strong></p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2011 - Present</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Following Google's CDN for jQuery, we decided to start a CDN for the less popular Javascript
+                          frameworks. The CDN is community moderated and open source on GitHub. We secured a partnership
+                          with Cloudflare who now supports the infrastructure.</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Millions of sites use the CDN in production</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Larger market share than Yahoo's, Microsoft's and Google's javascript content distribution
+                            networks</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>We serve hundreds of billions request a month</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Contains over 3000 popular Javascript libraries</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Millions of developers visit the site per year</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail" id="skills">
+              <div class="icon"><i class="fs-lg icon-tools"></i><span class="mobile-title">Skills</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">Skills</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested card-skills">
+                      <div class="skill-info"><strong>Frontend</strong>
+                        <div class="space-top labels"><span class="label label-keyword">
+                            <p>HTML / JSX</p>
+                          </span><span class="label label-keyword">
+                            <p>SCSS / CSS / BEM / Styled Components</p>
+                          </span><span class="label label-keyword">
+                            <p>Javascript / Typescript</p>
+                          </span><span class="label label-keyword">
+                            <p>React / Next</p>
+                          </span><span class="label label-keyword">
+                            <p>Redux / Apollo</p>
+                          </span></div>
+                      </div>
+                    </li>
+                    <li class="card card-nested card-skills">
+                      <div class="skill-info"><strong>Backend</strong>
+                        <div class="space-top labels"><span class="label label-keyword">
+                            <p>Node</p>
+                          </span><span class="label label-keyword">
+                            <p>Ruby</p>
+                          </span><span class="label label-keyword">
+                            <p>Python</p>
+                          </span><span class="label label-keyword">
+                            <p>Postgres</p>
+                          </span><span class="label label-keyword">
+                            <p>Redis</p>
+                          </span><span class="label label-keyword">
+                            <p>Serverless</p>
+                          </span></div>
+                      </div>
+                    </li>
+                    <li class="card card-nested card-skills">
+                      <div class="skill-info"><strong>Devops</strong>
+                        <div class="space-top labels"><span class="label label-keyword">
+                            <p>AWS</p>
+                          </span><span class="label label-keyword">
+                            <p>G Cloud</p>
+                          </span><span class="label label-keyword">
+                            <p>Heroku</p>
+                          </span><span class="label label-keyword">
+                            <p>Caching</p>
+                          </span></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="education">
+              <div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span>
+              </div>
+              <div class="info">
+                <h4 class="title text-uppercase">Education</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">
+                      <div class="content">
+                        <p class="clear-margin relative"><strong>Software Engineering (incomplete),
+                            Bachelors,&nbsp;</strong>The University of Queensland</p>
+                        <p class="text-muted clear-margin"><small>Feb, 2008 - Dec, 2009</small></p><i></i>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="awards">
+              <div class="icon"><i class="fs-lg icon-trophy"></i><span class="mobile-title">Awards</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">Awards</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">
+                      <div class="content">
+                        <p class="clear-margin" itemprop="award"><strong>Defender of the Internet </strong>,&nbsp;Fight
+                          For The Future</p>
+                        <p class="text-muted"><small>Awarded on: Oct 02, 2014</small></p>
+                        <div class="mop-wrapper">
+                          <p>For my work against mass surveillance and building out civic tools for digital democracy.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="interests">
+              <div class="icon"><i class="fs-lg icon-heart"></i><span class="mobile-title">Interests</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">Interests</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">
+                      <p><strong>Gardening</strong></p>
+                      <div class="space-top labels"><span class="label label-keyword">Lazy Gardening</span></div>
+                    </li>
+                    <li class="card card-nested">
+                      <p><strong>Music</strong></p>
+                      <div class="space-top labels"><span class="label label-keyword">Guitar</span><span
+                          class="label label-keyword">Singing</span><span class="label label-keyword">Dancing</span>
+                      </div>
+                    </li>
+                    <li class="card card-nested">
+                      <p><strong>Books</strong></p>
+                      <div class="space-top labels"><span class="label label-keyword">Reading</span><span
+                          class="label label-keyword">Writing</span><span class="label label-keyword">History</span>
+                      </div>
+                    </li>
+                    <li class="card card-nested">
+                      <p><strong>Open Source</strong></p>
+                      <div class="space-top labels"><span class="label label-keyword">All of it</span></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="references">
+              <div class="icon"><i class="fs-lg icon-thumbs-up"></i><span class="mobile-title">References</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">References</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">Joey Flores, Co-founder and CEO of Earbits, Inc.<blockquote
+                        class="quote">
+                        <div class="mop-wrapper">
+                          <p>Thomas was hired as a lead developer and, upon the leaving of our co-founder took over as
+                            CTO of Earbits. Thomas is, hands down, one of those A Players you hear of companies dying to
+                            hire. He is incredibly smart, not just at code but about everything from classical music to
+                            Chinese language and culture. Thomas is great to work with and, as a well established
+                            contributor to open source projects and several successful ventures, commands the respect of
+                            engineers at all levels. I would suggest doing anything you can to have him on your team.
+                          </p>
+                        </div>
+                      </blockquote>
+                    </li>
+                    <li class="card card-nested">Yotam Rosenbaum, SVP of Operations, Earbits, Inc.<blockquote
+                        class="quote">
+                        <div class="mop-wrapper">
+                          <p>I've had the great pleasure of working with Thomas for the past three years at Earbits, and
+                            on a few side projects. Two years ago our CTO left on a moment's notice, Thomas saved our
+                            company by quickly stepping up to fill this role. He has been with our company through thick
+                            and thin and made serious personal sacrifices in order to help the company during tough
+                            times. He is a phenomenal hacker and a true team player. Highly recommended!</p>
+                        </div>
+                      </blockquote>
+                    </li>
+                    <li class="card card-nested">Ryan Kirkman, Senior Software Engineer at Nerdwallet<blockquote
+                        class="quote">
+                        <div class="mop-wrapper">
+                          <p>Thomas is an extremely talented engineer with a very broad range of skills and experience.
+                            From being a thought leader in the front-end community via backbonetutorials.com and
+                            cdnjs.com, to designing and implementing the API for cdnjs.com, working with Thomas has been
+                            fantastic learning experience. Thomas is truly a full stack develop, and his work output is
+                            incredible. If there is any opportunity to work with Thomas, I take it. He is the definition
+                            of an A player.</p>
+                        </div>
+                      </blockquote>
+                    </li>
+                    <li class="card card-nested">Greg Davis<blockquote class="quote">
+                        <div class="mop-wrapper">
+                          <p>On Thomas Davis... Hire this guy. Do not be fooled. Incredibly capable and fast. Plays well
+                            with others. Unbelievable at front-end work end programming but that is just the start.
+                            Visionary. Hire him before I do.</p>
+                        </div>
+                      </blockquote>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="./scripts.js"></script>
+</body>
+
+</html>
