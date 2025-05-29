@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>My Resume</title>
 </head>
-<body style="padding: 10%;">
+<body class="p-10">
     <!-- Basics  -->
     <section class="basics">
-        <h1 style="text-align: center;">John Doe</h1>
-        <h4>Programmer</h4>
+      <div class="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 ...">  
+        <img class="mx-auto block h-24 rounded-full sm:mx-0 sm:shrink-0" 
+        src="../../static/img/erin-lindford.90b9d461.jpg" alt="" />  
+        <div class="space-y-2 text-center sm:text-left">    
+          <div class="space-y-0.5">      
+            <p class="text-lg font-semibold text-black">Erin Lindford</p>      
+            <p class="font-medium text-gray-500">Product Engineer</p>    
+          </div>      
+        </div>
         <ul style="list-style: none;">
-            <li>
-                Email: john@gmail.com
-            </li>
-            <li>
-                Phone: (912) 555-4321
-            </li>
+            <li>Email: john@gmail.com</li>
+            <li>Phone: (912) 555-4321</li>
+            <li>url: <a href="https://johndoe.com"></a>johndoe.com</li>
         </ul>
+      </div>
+        
 
-        "image": "",
-        "url": "https://johndoe.com",
         "summary": "A summary of John Doe…",
         "location": {
             "address": "2712 Broadway St",
