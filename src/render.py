@@ -4,7 +4,7 @@ from pathlib import Path
 
 def render_resume(resume: Resume, output_path="docs/index.html"):
     env = Environment(loader=FileSystemLoader("src/templates"))
-    template = env.get_template("resume.html")
+    template = env.get_template("layout.html")
     rendered_html = template.render(resume=resume)
     Path(output_path).write_text(rendered_html)
 
