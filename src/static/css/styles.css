@@ -1,0 +1,78 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background: #f4f4f4;
+}
+.sidebar {
+    width: 30%;
+    background-color: #dce3eb;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.sidebar img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+.sidebar h3 {
+    color: #0070c0;
+    margin-top: 20px;
+}
+.main {
+    width: 70%;
+    background-color: white;
+    padding: 40px;
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+h2 {
+    font-size: 18px;
+    color: #777;
+}
+h3 {
+    margin-top: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+.section {
+    margin-bottom: 20px;
+}
+.experience {
+    margin-bottom: 10px;
+}
+.bar {
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.bar-fill {
+    height: 100%;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 20px;
+    color: white;
+    font-size: 12px;
+}
+.contact, .interest, .languages {
+    text-align: left;
+    margin-top: 20px;
+}
+p {
+    text-align: left;
+    font-size: small;
+}
+
+.languages table {
+    font-size: small;
+}
+
+.languages th {
+    text-align: center;
+}

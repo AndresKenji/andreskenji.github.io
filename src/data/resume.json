@@ -1,78 +1,63 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Programmer",
-    "image": "",
-    "email": "john@gmail.com",
-    "phone": "(912) 555-4321",
-    "url": "https://johndoe.com",
-    "summary": "A summary of John Doe…",
+    "name": "Oscar A. Rodriguez",
+    "label": "Telecomunications Engineer",
+    "image": "../src/static/img/k.jpg",
+    "email": "andres.kenji@outlook.com",
+    "phone": "(+57) 301 6679447",
+    "url": "https://linkedin.com/in/oarf",
+    "summary": "I am a Telecommunications Engineer currently working as a Data Engineer. I have a passion for coding and task automation. possess experience with Go, Python, JavaScript, and PowerShell, as well as experience managing cloud services with AWS and Azure. I am eager to collaborate and learn with other developers. Currently, I am learning web development and a bit of data science. Feel free to ask me about PowerShell, Python, or SQLAlchemy. I am looking for opportunities to work in a team environment.",
     "location": {
-      "address": "2712 Broadway St",
-      "postal_code": "CA 94115",
-      "city": "San Francisco",
-      "country_code": "US",
-      "region": "California"
+      "address": "Engativa",
+      "postal_code": "CO 111011",
+      "city": "Bogotá",
+      "country_code": "CO",
+      "region": "Bogotá"
     },
     "profiles": [{
       "network": "Twitter",
-      "username": "john",
-      "url": "https://twitter.com/john"
+      "username": "Kenji_Andres",
+      "url": "https://x.com/kenji_andres"
     }]
   },
   "work": [{
-    "name": "Company",
-    "position": "President",
-    "url": "https://company.com",
-    "start_date": "2013-01-01",
-    "end_date": "2014-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Started the company"
-    ]
-  }],
-  "volunteer": [{
-    "organization": "Organization",
-    "position": "Volunteer",
-    "url": "https://organization.com/",
-    "start_date": "2012-01-01",
-    "end_date": "2013-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Awarded 'Volunteer of the Month'"
-    ]
+    "name": "Michael Page",
+    "position": "Cloud Automation Engineer",
+    "url": "https://www.michaelpage.com/",
+    "start_date": "2025-03-18",
+    "end_date": "Current",
+    "summary": "Create data and proccess flows to automate ....",
+    "highlights":[]
+  },{
+    "name": "IFX Networks",
+    "position": "Cloud Data and Automation Engineer",
+    "url": "https://ifxnetworks.com/en/",
+    "start_date": "2022-01-18",
+    "end_date": "2025-03-18",
+    "summary": "Create data and proccess flows to automate ....",
+    "highlights":[]   
   }],
   "education": [{
-    "institution": "University",
-    "url": "https://institution.com/",
-    "area": "Software Development",
+    "institution": "Universidad Compensar",
+    "url": "https://ucompensar.edu.co/",
+    "area": "Telecomunications Engineer",
     "study_type": "Bachelor",
-    "start_date": "2011-01-01",
-    "end_date": "2013-01-01",
+    "start_date": "2015-02-01",
+    "end_date": "2020-12-01",
     "score": "4.0",
     "courses": [
       "DB1101 - Basic SQL"
     ]
   }],
-  "awards": [{
-    "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
-  }],
+  "volunteer":[],
+  "awards": [],
   "certificates": [{
     "name": "Certificate",
     "date": "2021-11-07",
     "issuer": "Company",
     "url": "https://certificate.com"
   }],
-  "publications": [{
-    "name": "Publication",
-    "publisher": "Company",
-    "release_date": "2014-10-01",
-    "url": "https://publication.com",
-    "summary": "Description…"
-  }],
+  "publications": [],
   "skills": [{
     "name": "Web Development",
     "level": "Master",
@@ -85,6 +70,9 @@
   "languages": [{
     "language": "English",
     "fluency": "Advanced"
+  },{
+    "language": "Spanish",
+    "fluency": "Native"
   }],
   "interests": [{
     "name": "Wildlife",

@@ -1,4 +1,3 @@
-from datetime import date
 from enum import Enum
 from typing import Optional, List
 from pydantic import BaseModel, EmailStr
@@ -31,8 +30,8 @@ class Work(BaseModel):
     name:str
     position:str
     url:Optional[str]
-    start_date:date
-    end_date:date
+    start_date:str
+    end_date:str
     summary:str
     highlights:Optional[List[str]]
 
@@ -40,8 +39,8 @@ class Volunteer(BaseModel):
     organization:str
     position:str
     url:Optional[str]
-    start_date:date
-    end_date:date
+    start_date:str
+    end_date:str
     summary:str
     highlights:Optional[List[str]]
 
@@ -59,20 +58,20 @@ class Education(BaseModel):
     url:str
     area:str
     study_type:StudyType
-    start_date:date
-    end_date:date
+    start_date:str
+    end_date:str
     score:str
     courses:List[str]
 
 class Awards(BaseModel):
     title:str
-    date:date
+    date:str
     awarder:str
     summary:str
 
 class Certificate(BaseModel):
     name:str
-    date:date
+    date:str
     issuer:str
     url:str
 
@@ -95,6 +94,7 @@ class Fluency(Enum):
     ADVANCED="Advanced"
     SUPERIOR="Superior"
     DISTINGUISHED="Distinguished"
+    NATIVE="Native"
     # CEFR
     A1="Beginner"
     A2="Elementary"
@@ -119,8 +119,8 @@ class Reference(BaseModel):
 
 class Project(BaseModel):
     name:str
-    start_date:date
-    end_date:date
+    start_date:str
+    end_date:str
     description:str
     highlights:List[str]
     url:str
