@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ resume.basics.name }} - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: #f4f4f4;
+        }
+        .sidebar {
+            width: 30%;
+            background-color: #dce3eb;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .sidebar img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .sidebar h3 {
+            color: #0070c0;
+            margin-top: 20px;
+        }
+        .main {
+            width: 70%;
+            background-color: white;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-size: 18px;
+            color: #777;
+        }
+        h3 {
+            margin-top: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .experience {
+            margin-bottom: 10px;
+        }
+        .bar {
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 20px;
+            color: white;
+            font-size: 12px;
+        }
+        .contact, .interest {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="profile.jpg" alt="Profile Picture">
+        <h3>ABOUT ME</h3>
+        <p>{{ resume.basics.summary }}</p>
+
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <p>{{ resume.basics.phone }}</p>
+            <p><a href="{{ resume.basics.url }}">LINKEDIN</a></p>
+            <p><a href="mailto:{{ resume.basics.email }}">EMAIL</a></p>
+        </div>
+
+        <div class="interest">
+            <h3>INTEREST</h3>
+            <ul>
+                {% for interest in resume.interests %}
+                    <li>{{ interest.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <h1>{{ resume.basics.name }}</h1>
+        <h2>{{ resume.basics.label }}</h2>
+
+        <div class="section">
+            <h3>EDUCATION</h3>
+            {% for edu in resume.education %}
+            <div>
+                <strong>{{ edu.institution }}</strong><br>
+                {{ edu.study_type }} ({{ edu.start_date }} – {{ edu.end_date }})
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <h3>WORK EXPERIENCE</h3>
+            {% for job in resume.work %}
+            <div class="experience">
+                <strong>{{ job.name }}</strong> - {{ job.position }}<br>
+                {{ job.start_date }} – {{ job.end_date }}<br>
+                <p>{{ job.summary }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <h3>APTITUDES</h3>
+            {% for skill in resume.skills %}
+            <div>{{ skill.name }}</div>
+            <div class="bar">
+                <div class="bar-fill" style="width: {{ skill.level }}%; background-color: {{ skill.color or '#0070c0' }};">
+                    {{ skill.level }}%
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

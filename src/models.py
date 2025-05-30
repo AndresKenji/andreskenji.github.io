@@ -5,7 +5,7 @@ from pydantic import BaseModel, EmailStr
 
 
 class Location(BaseModel):
-    adress:str
+    address:str
     postal_code:str
     city:str
     country_code:str
@@ -79,7 +79,7 @@ class Certificate(BaseModel):
 class Publication(BaseModel):
     name:str
     publisher:str
-    releaseDate:str
+    release_date:str
     url:str
     summary:str
 
@@ -90,9 +90,9 @@ class Skill(BaseModel):
 
 class Fluency(Enum):
     # ACTFL
-    NOVICE="Novice"	
-    INTERMEDIATE="Intermediate"	
-    ADVANCED="Advanced"	
+    NOVICE="Novice"
+    INTERMEDIATE="Intermediate"
+    ADVANCED="Advanced"
     SUPERIOR="Superior"
     DISTINGUISHED="Distinguished"
     # CEFR
@@ -252,7 +252,7 @@ class Resume(BaseModel):
                     }]
                 }
             ]
-            
+
             }
         }
 
