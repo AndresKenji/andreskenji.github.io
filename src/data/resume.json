@@ -2,7 +2,7 @@
   "basics": {
     "name": "Oscar A. Rodriguez",
     "label": "Telecomunications Engineer",
-    "image": "../src/static/img/kenji.jpg",
+    "image": "static/img/kenji.jpg",
     "email": "andres.kenji@outlook.com",
     "phone": "(+57) 301 6679447",
     "url": "https://linkedin.com/in/oarf",
