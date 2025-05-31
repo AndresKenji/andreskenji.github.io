@@ -2,11 +2,11 @@
   "basics": {
     "name": "Oscar A. Rodriguez",
     "label": "Telecomunications Engineer",
-    "image": "../src/static/img/k.jpg",
+    "image": "../src/static/img/kenji.jpg",
     "email": "andres.kenji@outlook.com",
     "phone": "(+57) 301 6679447",
     "url": "https://linkedin.com/in/oarf",
-    "summary": "I am a Telecommunications Engineer currently working as a Data Engineer. I have a passion for coding and task automation. possess experience with Go, Python, JavaScript, and PowerShell, as well as experience managing cloud services with AWS and Azure. I am eager to collaborate and learn with other developers. Currently, I am learning web development and a bit of data science. Feel free to ask me about PowerShell, Python, or SQLAlchemy. I am looking for opportunities to work in a team environment.",
+    "summary": "I’m a Telecommunications Engineer currently working as a Cloud Automation Engineer with a strong focus on DevOps practices. I began my career managing virtualization platforms (VMware, Hyper-V), transitioned into cloud administration with Azure and AWS, and eventually specialized in automation — where I discovered my true passion: coding and optimizing infrastructure.\nI have hands-on experience with Go, Python, PowerShell, and Terraform, and I use these tools to automate cloud deployments, CI/CD pipelines, and infrastructure management. I'm passionate about building reliable, scalable systems and continuously improving developer workflows.\nI enjoy working in collaborative environments and learning from other engineers. Currently, I'm also expanding my skills in web development and data science to bring a broader perspective to problem-solving in DevOps.",
     "location": {
       "address": "Engativa",
       "postal_code": "CO 111011",
@@ -26,7 +26,7 @@
     "url": "https://www.michaelpage.com/",
     "start_date": "2025-03-18",
     "end_date": "Current",
-    "summary": "Create data and proccess flows to automate ....",
+    "summary": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
     "highlights":[]
   },{
     "name": "IFX Networks",
@@ -34,8 +34,16 @@
     "url": "https://ifxnetworks.com/en/",
     "start_date": "2022-01-18",
     "end_date": "2025-03-18",
-    "summary": "Create data and proccess flows to automate ....",
-    "highlights":[]   
+    "summary": "Design and implement data pipelines to acquire and transform information, enabling decision-making support.\nApply data analysis techniques to identify patterns and trends, and communicate findings through effective visualizations.\nDevelop automated algorithms and procedures to integrate data from multiple sources and optimize critical business processes.\nIdentify opportunities to collect new data and improve data quality and reliability.",
+    "highlights":[]
+  },{
+    "name": "A Toda Hora S.A.",
+    "position": "Platform Administrator",
+    "url": "https://www.avalvc.com.co/inicio",
+    "start_date": "2022-01-18",
+    "end_date": "2025-03-18",
+    "summary": "Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.\nAutomated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.\nDeployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.",
+    "highlights":[]
   }],
   "education": [{
     "institution": "Universidad Compensar",
@@ -43,11 +51,18 @@
     "area": "Telecomunications Engineer",
     "study_type": "Bachelor",
     "start_date": "2015-02-01",
+    "end_date": "2021-12-01",
+    "score": "4.0",
+    "courses": []
+  },{
+    "institution": "Universidad Compensar",
+    "url": "https://ucompensar.edu.co/",
+    "area": "Telecommunications Network Management",
+    "study_type": "Associate",
+    "start_date": "2018-01-01",
     "end_date": "2020-12-01",
     "score": "4.0",
-    "courses": [
-      "DB1101 - Basic SQL"
-    ]
+    "courses": []
   }],
   "volunteer":[],
   "awards": [],
@@ -59,13 +74,17 @@
   }],
   "publications": [],
   "skills": [{
-    "name": "Web Development",
+    "name": "Programming",
     "level": "Master",
-    "keywords": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ]
+    "keywords": ["Python","Golang","javascript","Microservices","Restful APIs"]
+  },{
+    "name": "DevOps",
+    "level": "Proficient",
+    "keywords": ["CI/CD","GitHub Actions","Terraform","Docker","Kubernetes","Azure DevOps"]
+  },{
+    "name": "Cloud Computing",
+    "level": "Proficient",
+    "keywords": ["Azure", "AWS"]
   }],
   "languages": [{
     "language": "English",
@@ -75,11 +94,14 @@
     "fluency": "Native"
   }],
   "interests": [{
-    "name": "Wildlife",
-    "keywords": [
-      "Ferrets",
-      "Unicorns"
-    ]
+    "name": "Technology",
+    "keywords": ["Coding","Hardware"]
+  },{
+    "name": "Programming",
+    "keywords": ["Python","Golang"]
+  },{
+    "name": "Sci-Fi Movies/books",
+    "keywords": ["Stasr Wars","BTTF", "Lord of the Rings"]
   }],
   "references": [{
     "name": "Jane Doe",

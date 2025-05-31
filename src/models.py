@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import Optional, List
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, EmailStr, model_validator
 
 
 class Location(BaseModel):
@@ -83,13 +83,13 @@ class Publication(BaseModel):
     summary:str
 
 
-class SkillLevel(Enum):
+class SkillLevel(str, Enum):
     NOVICE = "Novice"
     COMPETENT = "Competent"
     PROFICIENT = "Proficient"
     MASTER = "Master"
 
-    def to_percentage(self):
+    def to_percentage(self) -> int:
         return {
             "Novice": 25,
             "Competent": 50,
@@ -97,19 +97,18 @@ class SkillLevel(Enum):
             "Master": 100
         }[self.value]
 
+
 class Skill(BaseModel):
     name: str
     level: SkillLevel
     keywords: List[str]
-    color: str = "#0070c0"  # valor por defecto
-    level_percent: int = 0  # se llenará automáticamente
+    color: str = "#0070c0"
+    level_percent: int = 0
 
-    @property
-    def set_level_percent(self):
-        level = self.level.to_percentage()
-        if level:
-            return level
-        return 0
+    @model_validator(mode="after")
+    def set_level_percent(cls, data):
+        data.level_percent = data.level.to_percentage()
+        return data
 
 
 class Fluency(Enum):
