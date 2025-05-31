@@ -1,0 +1,42 @@
+<div class="main">
+    <h1>{{ resume.basics.name }}</h1>
+    <h2>{{ resume.basics.label }}</h2>
+
+    <div class="section">
+        <h3>EDUCATION</h3>
+        {% for edu in resume.education %}
+        <div>
+            <a href="{{edu.url}}" class="contact-link" target="_blank"><strong>{{ edu.institution }}</strong></a> ({{ edu.start_date }} -> {{ edu.end_date }})<br>
+            {{ edu.study_type.value }}'s {{edu.area}}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h3>WORK EXPERIENCE</h3>
+        {% for job in resume.work %}
+        <div class="experience">
+            <a href="{{job.url}}" class="contact-link" target="_blank"><strong>{{ job.name }}</strong> - {{ job.position }}</a>
+            {{ job.start_date }} -> {{ job.end_date }}<br>
+            <p>{{ job.summary }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h3>APTITUDES</h3>
+        {% for skill in resume.skills %}
+            <div class="skill-row">
+            <span class="skill-name">{{ skill.name }}</span>
+            <progress class="skill-bar" max="100" value="{{ skill.level_percent }}"></progress>
+            <span class="skill-value">{{ skill.level_percent }}%</span>
+            </div>
+            <div class="skill-keywords">
+            {% for keyword in skill.keywords %}
+                <span class="skill-tag">{{ keyword }}</span>
+            {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
