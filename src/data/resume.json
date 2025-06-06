@@ -41,7 +41,7 @@
     "position": "Platform Administrator",
     "url": "https://www.avalvc.com.co/inicio",
     "start_date": "2022-01-18",
-    "end_date": "2025-03-18",
+    "end_date": "2023-01-09",
     "summary": "Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.\nAutomated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.\nDeployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.",
     "highlights":[]
   }],
