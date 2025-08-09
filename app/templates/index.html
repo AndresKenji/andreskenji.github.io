@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder - Create Your Professional Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <h1><i class="fas fa-file-alt"></i> CV Builder</h1>
+                <p>Create your professional resume in minutes</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="app-layout">
+                    <!-- Sidebar - Form -->
+                    <aside class="form-sidebar">
+                        <div class="form-container">
+                            <div class="form-header">
+                                <h2>Your Information</h2>
+                                <div class="template-selector">
+                                    <label for="template-select">Choose Template:</label>
+                                    <select id="template-select" v-model="selectedTemplate">
+                                        <option v-for="tmpl in templates" :key="tmpl.id" :value="tmpl.id">
+                                            [[ tmpl.name ]]
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <form id="cv-form" class="cv-form">
+                                <!-- Basic Information -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-user"></i> Basic Information</h3>
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" id="name" v-model="resumeData.basics.name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="label">Professional Title *</label>
+                                        <input type="text" id="label" v-model="resumeData.basics.label" placeholder="e.g., Software Engineer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input type="email" id="email" v-model="resumeData.basics.email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" v-model="resumeData.basics.phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="url">LinkedIn URL</label>
+                                        <input type="url" id="url" v-model="resumeData.basics.url">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="summary">Professional Summary *</label>
+                                        <textarea id="summary" v-model="resumeData.basics.summary" rows="4" placeholder="Brief description of your professional background and goals"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Profile Image URL</label>
+                                        <input type="url" id="image" v-model="resumeData.basics.image" placeholder="https://example.com/your-photo.jpg">
+                                    </div>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" id="city" v-model="resumeData.basics.location.city">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="country">Country</label>
+                                            <input type="text" id="country" v-model="resumeData.basics.location.country_code">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" id="address" v-model="resumeData.basics.location.address">
+                                    </div>
+                                </div>
+
+                                <!-- Work Experience -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                                    <div v-for="(job, index) in resumeData.work" :key="index" class="dynamic-section">
+                                        <div class="section-header">
+                                            <h4>Job [[ index + 1 ]]</h4>
+                                            <button type="button" @click="removeWork(index)" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" v-model="job.name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Position</label>
+                                                <input type="text" v-model="job.position">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Start Date</label>
+                                                <input type="text" v-model="job.start_date" placeholder="2020-01">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>End Date</label>
+                                                <input type="text" v-model="job.end_date" placeholder="Current">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Company Website</label>
+                                            <input type="url" v-model="job.url">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Job Description</label>
+                                            <textarea v-model="job.summary" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="button" @click="addWork" class="btn-add">
+                                        <i class="fas fa-plus"></i> Add Work Experience
+                                    </button>
+                                </div>
+
+                                <!-- Education -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                                    <div v-for="(edu, index) in resumeData.education" :key="index" class="dynamic-section">
+                                        <div class="section-header">
+                                            <h4>Education [[ index + 1 ]]</h4>
+                                            <button type="button" @click="removeEducation(index)" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Institution</label>
+                                            <input type="text" v-model="edu.institution">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Degree</label>
+                                                <select v-model="edu.study_type">
+                                                    <option value="Associate">Associate</option>
+                                                    <option value="Bachelor">Bachelor</option>
+                                                    <option value="Master">Master</option>
+                                                    <option value="PhD">PhD</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Field of Study</label>
+                                                <input type="text" v-model="edu.area">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Start Date</label>
+                                                <input type="text" v-model="edu.start_date" placeholder="2018">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>End Date</label>
+                                                <input type="text" v-model="edu.end_date" placeholder="2022">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Institution Website</label>
+                                            <input type="url" v-model="edu.url">
+                                        </div>
+                                    </div>
+                                    <button type="button" @click="addEducation" class="btn-add">
+                                        <i class="fas fa-plus"></i> Add Education
+                                    </button>
+                                </div>
+
+                                <!-- Skills -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-cogs"></i> Skills</h3>
+                                    <div v-for="(skill, index) in resumeData.skills" :key="index" class="dynamic-section">
+                                        <div class="section-header">
+                                            <h4>Skill [[ index + 1 ]]</h4>
+                                            <button type="button" @click="removeSkill(index)" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Skill Name</label>
+                                                <input type="text" v-model="skill.name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Level (1-5)</label>
+                                                <select v-model="skill.level">
+                                                    <option value="1">1 - Beginner</option>
+                                                    <option value="2">2 - Novice</option>
+                                                    <option value="3">3 - Intermediate</option>
+                                                    <option value="4">4 - Advanced</option>
+                                                    <option value="5">5 - Expert</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Keywords (comma separated)</label>
+                                            <input type="text" v-model="skill.keywordsText" @input="updateSkillKeywords(index)" placeholder="React, JavaScript, Node.js">
+                                        </div>
+                                    </div>
+                                    <button type="button" @click="addSkill" class="btn-add">
+                                        <i class="fas fa-plus"></i> Add Skill
+                                    </button>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="form-actions">
+                                    <button type="button" @click="previewCV" class="btn btn-primary" :disabled="isLoading">
+                                        <i class="fas fa-eye"></i> Preview CV
+                                    </button>
+                                    <button type="button" @click="downloadProject" class="btn btn-secondary" :disabled="isLoading">
+                                        <i class="fas fa-download"></i> Download Project
+                                    </button>
+                                    <button type="button" @click="exportPDF" class="btn btn-success" :disabled="isLoading">
+                                        <i class="fas fa-file-pdf"></i> Export PDF
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
+
+                    <!-- Main - Preview -->
+                    <main class="preview-area">
+                        <div class="preview-container">
+                            <div class="preview-header">
+                                <h2>Live Preview</h2>
+                                <div class="preview-actions">
+                                    <button @click="refreshPreview" class="btn-icon" title="Refresh Preview">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="preview-content" id="preview-content">
+                                <div v-if="isLoading" class="loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Generating preview...</p>
+                                </div>
+                                <div v-else-if="previewHTML" v-html="previewHTML" class="cv-preview"></div>
+                                <div v-else class="preview-placeholder">
+                                    <i class="fas fa-eye"></i>
+                                    <p>Click "Preview CV" to see your resume</p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="container">
+                <p>&copy; 2025 CV Builder. Create professional resumes with ease.</p>
+                <p>
+                    <a href="https://github.com/AndresKenji/andreskenji.github.io" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Vue.js and App Script -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

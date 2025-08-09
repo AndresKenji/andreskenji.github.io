@@ -1,0 +1,401 @@
+/* Classic CV Template Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 300px;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 30px 25px;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Contact Section */
+.contact-section h3,
+.summary-section h3,
+.skills-section h3,
+.languages-section h3,
+.interests-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    text-transform: uppercase;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.contact-link:hover {
+    opacity: 0.8;
+}
+
+.contact-icon {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+/* Summary Section */
+.summary-section {
+    margin-bottom: 30px;
+}
+
+.summary-section p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+/* Skills Section */
+.skills-section {
+    margin-bottom: 30px;
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.skill-level {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Languages Section */
+.languages-section {
+    margin-bottom: 30px;
+}
+
+.language-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.language-name {
+    font-weight: 500;
+}
+
+.language-level {
+    font-size: 12px;
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+/* Interests Section */
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.interest-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Main Content Styles */
+.main {
+    flex: 1;
+    padding: 40px;
+    background: white;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Education Section */
+.education-item,
+.experience-item,
+.project-item,
+.volunteer-item,
+.award-item,
+.publication-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.education-item:last-child,
+.experience-item:last-child,
+.project-item:last-child,
+.volunteer-item:last-child,
+.award-item:last-child,
+.publication-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.education-header,
+.experience-header,
+.project-header,
+.volunteer-header,
+.award-header,
+.publication-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.education-header h4,
+.experience-header h4,
+.project-header h4,
+.volunteer-header h4,
+.award-header h4,
+.publication-header h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.institution-link,
+.company-link,
+.project-link,
+.organization-link,
+.publication-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.institution-link:hover,
+.company-link:hover,
+.project-link:hover,
+.organization-link:hover,
+.publication-link:hover {
+    color: #2980b9;
+}
+
+.date-range,
+.award-date,
+.publication-date {
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.degree,
+.position {
+    font-size: 16px;
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.score,
+.summary,
+.description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.highlights {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.highlights li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.highlights li::before {
+    content: "▸";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.project-keywords,
+.keyword-tag {
+    margin-top: 10px;
+}
+
+.keyword-tag {
+    display: inline-block;
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+
+.awarder,
+.publisher {
+    font-size: 14px;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .profile-section {
+        text-align: center;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .education-header,
+    .experience-header,
+    .project-header,
+    .volunteer-header,
+    .award-header,
+    .publication-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .date-range,
+    .award-date,
+    .publication-date {
+        margin-top: 5px;
+    }
+}
+
+@media print {
+    .page-container {
+        max-width: none;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .page-wrapper {
+        min-height: auto;
+    }
+
+    .sidebar {
+        background: #2c3e50 !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}

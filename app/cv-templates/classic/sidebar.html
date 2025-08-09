@@ -1,0 +1,95 @@
+<div class="sidebar">
+    <div class="profile-section">
+        <img src="{{resume.basics.image}}" alt="Profile Picture" class="profile-image">
+        <h1 class="name">{{ resume.basics.name }}</h1>
+        <h2 class="title">{{ resume.basics.label }}</h2>
+    </div>
+
+    <div class="contact-section">
+        <h3>CONTACT</h3>
+        <div class="contact-item">
+            <a href="{{ resume.basics.url }}" class="contact-link" target="_blank" rel="noopener">
+                <svg class="contact-icon" height="16px" width="16px" viewBox="0 0 382 382" fill="currentColor">
+                    <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                             C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z
+                             M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345
+                             c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                             c5.554,0,10.056,4.502,10.056,10.056V329.844z
+                             M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666
+                             S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666
+                             S109.208,123.432,86.748,123.432z
+                             M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                             c-5.106,0-9.246-4.14-9.246-9.246v-84.168
+                             c0-12.556,3.683-55.021-32.813-55.021
+                             c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                             c0,5.106-4.139,9.246-9.246,9.246h-44.426
+                             c-5.106,0-9.246-4.14-9.246-9.246V149.593
+                             c0-5.106,4.14-9.246,9.246-9.246h44.426
+                             c5.106,0,9.246,4.14,9.246,9.246v15.655
+                             c10.497-15.753,26.097-27.912,59.312-27.912
+                             c73.552,0,73.131,68.716,73.131,106.472
+                             L341.91,330.654L341.91,330.654z" />
+                </svg>
+                <span class="contact-text">LinkedIn</span>
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <a href="mailto:{{ resume.basics.email }}" class="contact-link">
+                <svg class="contact-icon" height="16px" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 8L8.4499 11.6333C9.7329 12.4886 10.3745 12.9163 11.0678 13.0825C11.6806 13.2293 12.3194 13.2293 12.9322 13.0825C13.6255 12.9163 14.2671 12.4886 15.5501 11.6333L21 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="contact-text">{{ resume.basics.email }}</span>
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <svg class="contact-icon" height="16px" viewBox="0 0 24 24" fill="none">
+                <path d="M3 5.5L5 3.5H19L21 5.5V18.5L19 20.5H5L3 18.5V5.5Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="contact-text">{{ resume.basics.phone }}</span>
+        </div>
+    </div>
+
+    <div class="summary-section">
+        <h3>ABOUT ME</h3>
+        <p>{{ resume.basics.summary }}</p>
+    </div>
+
+    {% if resume.skills %}
+    <div class="skills-section">
+        <h3>SKILLS</h3>
+        {% for skill in resume.skills %}
+            <div class="skill-item">
+                <span class="skill-name">{{ skill.name }}</span>
+                <div class="skill-level">
+                    <div class="skill-bar" style="width: {{ skill.level.value * 20 }}%"></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.languages %}
+    <div class="languages-section">
+        <h3>LANGUAGES</h3>
+        {% for lang in resume.languages %}
+        <div class="language-item">
+            <span class="language-name">{{ lang.language }}</span>
+            <span class="language-level">{{ lang.fluency.value }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.interests %}
+    <div class="interests-section">
+        <h3>INTERESTS</h3>
+        <div class="interests-list">
+            {% for interest in resume.interests %}
+                <span class="interest-tag">{{ interest.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
