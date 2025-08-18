@@ -335,9 +335,11 @@
                                 </div>
 
                                 <div v-else-if="previewHTML" class="preview-frame">
-                                    {% raw %}
-                                    <div v-html="previewHTML" class="cv-preview"></div>
-                                    {% endraw %}
+                                    <iframe
+                                        :src="'/preview?template=' + selectedTemplate + '&t=' + Date.now()"
+                                        class="cv-preview-iframe"
+                                        frameborder="0">
+                                    </iframe>
                                 </div>
 
                                 <div v-else class="preview-placeholder">

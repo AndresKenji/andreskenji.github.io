@@ -20,9 +20,9 @@ from src.template_manager import TemplateManager
 load_dotenv()
 
 # Obtener la ruta base del proyecto
-BASE_DIR = Path(__file__).parent.parent.parent
-TEMPLATE_DIR = BASE_DIR / "src" / "app" / "templates"
-STATIC_DIR = BASE_DIR / "src" / "app" / "static"
+BASE_DIR: Path = Path(__file__).parent.parent.parent
+TEMPLATE_DIR: Path = BASE_DIR / "src" / "app" / "templates"
+STATIC_DIR: Path = BASE_DIR / "src" / "app" / "static"
 
 app: Flask = Flask(__name__,
                    template_folder=str(TEMPLATE_DIR),
@@ -34,7 +34,7 @@ template_manager: TemplateManager = TemplateManager()
 
 @app.route('/')
 def index()-> str:
-    # Lista de templates disponibles desde /src/templates
+
     templates = get_available_templates()
     return render_template('index.html', templates=templates)
 
@@ -42,10 +42,80 @@ def index()-> str:
 def get_templates() -> Response:
     return jsonify(get_available_templates())
 
-def get_available_templates():
-    """Obtiene la lista de templates disponibles en /src/templates"""
-    templates_dir = Path("src/templates")
-    templates = []
+@app.route('/preview')
+def preview_page():
+    """Sirve el preview del CV en una página independiente para iframe"""
+    try:
+        template_name = request.args.get('template', 'classic')
+
+        # Cargar datos desde el archivo
+        data_file = Path("src/data/resume.json")
+        if data_file.exists():
+            with open(data_file, 'r', encoding='utf-8') as f:
+                resume_data = json.load(f)
+
+            # Validar los datos y crear el objeto Resume
+            try:
+                resume = Resume(**resume_data)
+
+                # Renderizar el template directamente sin usar render_resume
+                from jinja2 import Environment, FileSystemLoader
+                env = Environment(loader=FileSystemLoader("src/templates"))
+                template = env.get_template(f"{template_name}.html")
+                rendered_html = template.render(resume=resume)
+
+                return rendered_html
+
+            except ValidationError as validation_error:
+                error_details = []
+                for error in validation_error.errors():
+                    error_details.append(f"{error['loc']}: {error['msg']}")
+                return f"""
+                <html>
+                <body>
+                    <h1>Preview - Validation Error</h1>
+                    <p>Please fix the following errors in your CV data:</p>
+                    <ul>
+                        {''.join(f'<li>{error}</li>' for error in error_details)}
+                    </ul>
+                    <p>Fill in the required information in the form to see the preview.</p>
+                </body>
+                </html>
+                """
+            except Exception as render_error:
+                return f"""
+                <html>
+                <body>
+                    <h1>Preview Error</h1>
+                    <p>Error rendering template: {str(render_error)}</p>
+                    <p>Please check your data and try again.</p>
+                </body>
+                </html>
+                """
+        else:
+            return """
+            <html>
+            <body>
+                <h1>Preview</h1>
+                <p>No data file found. Please fill in your basic information to see the preview.</p>
+            </body>
+            </html>
+            """
+
+    except Exception as e:
+        return f"""
+        <html>
+        <body>
+            <h1>Preview Error</h1>
+            <p>Unexpected error: {str(e)}</p>
+        </body>
+        </html>
+        """
+
+def get_available_templates() -> list[dict[str, str]]:
+
+    templates_dir: Path = Path("src/templates")
+    templates: list[dict[str,str]] = []
 
     if templates_dir.exists():
         for template_file in templates_dir.glob("*.html"):

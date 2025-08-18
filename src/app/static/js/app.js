@@ -119,29 +119,12 @@ createApp({
                 // Guardar datos automáticamente antes de generar preview
                 await this.saveDataToFile();
 
-                const response = await fetch('/api/preview', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        resume_data: this.prepareResumeData(),
-                        template: this.selectedTemplate
-                    }),
-                });
+                // Solo necesitamos marcar que tenemos contenido para mostrar el iframe
+                this.previewHTML = 'ready';
 
-                const data = await response.json();
-
-                if (data.success) {
-                    this.previewHTML = data.html;
-                } else {
-                    console.error('Preview errors:', data.errors || data.error);
-                    this.showError(data.error || 'Error generating preview');
-                    this.previewHTML = '';
-                }
             } catch (error) {
-                console.error('Error generating preview:', error);
-                this.showError('Network error generating preview');
+                console.error('Error saving data for preview:', error);
+                this.showError('Error saving data for preview');
                 this.previewHTML = '';
             } finally {
                 this.isLoading = false;
