@@ -58,6 +58,58 @@ def get_available_templates():
 
     return templates
 
+@app.route('/api/load-data', methods=['GET'])
+def load_data():
+    """Carga los datos del archivo src/data/resume.json"""
+    try:
+        data_file = Path("src/data/resume.json")
+
+        if data_file.exists():
+            with open(data_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                return jsonify({
+                    'success': True,
+                    'data': data
+                })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'No data file found'
+            }), 404
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/save-data', methods=['POST'])
+def save_data():
+    """Guarda los datos en src/data/resume.json"""
+    try:
+        data = request.get_json()
+        resume_data = data['resume_data']
+
+        # Crear el directorio src/data si no existe
+        data_dir = Path("src/data")
+        data_dir.mkdir(exist_ok=True)
+
+        # Guardar datos en formato JSON
+        data_file = data_dir / "resume.json"
+        with open(data_file, 'w', encoding='utf-8') as f:
+            json.dump(resume_data, f, indent=2, ensure_ascii=False)
+
+        return jsonify({
+            'success': True,
+            'message': 'Data saved successfully'
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 @app.route('/api/preview', methods=['POST'])
 def preview_resume():
     """Genera una vista previa del CV con el template seleccionado"""

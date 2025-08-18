@@ -7,6 +7,7 @@ createApp({
             isLoading: false,
             selectedTemplate: 'classic',
             templates: [],
+            previewHTML: '',
             showSuccessMessage: false,
             showErrorMessage: false,
             successMessage: '',
@@ -46,6 +47,7 @@ createApp({
     mounted() {
         console.log('Vue app mounted');
         this.loadTemplates();
+        this.loadDataFromFile();
         this.setupAutoSave();
     },
 
@@ -62,6 +64,94 @@ createApp({
             } catch (error) {
                 console.error('Error loading templates:', error);
                 this.showError('Error loading templates');
+            }
+        },
+
+        async loadDataFromFile() {
+            console.log('Loading data from src/data/resume.json...');
+            try {
+                const response = await fetch('/api/load-data');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.data) {
+                        this.resumeData = { ...this.resumeData, ...data.data };
+                        console.log('Data loaded from file:', this.resumeData);
+                        this.refreshPreview();
+                    }
+                }
+            } catch (error) {
+                console.log('No existing data file found, starting with empty form');
+            }
+        },
+
+        async saveDataToFile() {
+            try {
+                const response = await fetch('/api/save-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        resume_data: this.prepareResumeData()
+                    }),
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    console.log('Data saved to src/data/resume.json');
+                } else {
+                    console.error('Error saving data:', data.error);
+                }
+            } catch (error) {
+                console.error('Error saving data to file:', error);
+            }
+        },
+
+        async refreshPreview() {
+            if (!this.validateBasicFields()) {
+                this.previewHTML = '';
+                return;
+            }
+
+            this.isLoading = true;
+
+            try {
+                // Guardar datos automáticamente antes de generar preview
+                await this.saveDataToFile();
+
+                const response = await fetch('/api/preview', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        resume_data: this.prepareResumeData(),
+                        template: this.selectedTemplate
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    this.previewHTML = data.html;
+                } else {
+                    console.error('Preview errors:', data.errors || data.error);
+                    this.showError(data.error || 'Error generating preview');
+                    this.previewHTML = '';
+                }
+            } catch (error) {
+                console.error('Error generating preview:', error);
+                this.showError('Network error generating preview');
+                this.previewHTML = '';
+            } finally {
+                this.isLoading = false;
+            }
+        },
+
+        loadPreview() {
+            // Llamado cuando cambia el template
+            if (this.validateBasicFields()) {
+                this.refreshPreview();
             }
         },
 
@@ -384,21 +474,39 @@ createApp({
         },
 
         setupAutoSave() {
-            // Guardar datos en localStorage cada 30 segundos
+            // Guardar datos cada 30 segundos tanto en localStorage como en archivo
             setInterval(() => {
                 localStorage.setItem('cvBuilderData', JSON.stringify(this.resumeData));
+                this.saveDataToFile();
             }, 30000);
 
-            // Cargar datos guardados al iniciar
+            // Cargar datos guardados al iniciar (localStorage como backup)
             const savedData = localStorage.getItem('cvBuilderData');
             if (savedData) {
                 try {
                     const parsed = JSON.parse(savedData);
-                    this.resumeData = { ...this.resumeData, ...parsed };
+                    // Solo cargar localStorage si no hay datos del archivo
+                    if (!this.resumeData.basics.name && parsed.basics && parsed.basics.name) {
+                        this.resumeData = { ...this.resumeData, ...parsed };
+                        console.log('Data loaded from localStorage as fallback');
+                    }
                 } catch (error) {
-                    console.error('Error loading saved data:', error);
+                    console.error('Error loading saved data from localStorage:', error);
                 }
             }
+
+            // Auto-refresh preview cuando cambian los datos básicos
+            this.$watch('resumeData.basics.name', () => {
+                if (this.resumeData.basics.name && this.resumeData.basics.email) {
+                    setTimeout(() => this.refreshPreview(), 1000);
+                }
+            });
+
+            this.$watch('selectedTemplate', () => {
+                if (this.validateBasicFields()) {
+                    this.refreshPreview();
+                }
+            });
         },
 
         clearAllData() {

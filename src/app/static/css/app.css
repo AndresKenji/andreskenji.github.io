@@ -44,6 +44,31 @@ body {
     min-height: calc(100vh - 200px);
 }
 
+.app-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.form-column {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.preview-column {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    max-height: 90vh;
+    position: sticky;
+    top: 20px;
+}
+
 .form-layout {
     max-width: 800px;
     margin: 0 auto;
@@ -534,5 +559,112 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Preview Styles */
+.preview-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-header h2 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.preview-actions .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.preview-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(90vh - 120px);
+}
+
+.cv-preview {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform-origin: top left;
+    zoom: 0.8;
+}
+
+.preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: #a0aec0;
+    text-align: center;
+}
+
+.preview-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.preview-placeholder p {
+    font-size: 1.1rem;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: #667eea;
+}
+
+.loading-indicator i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.loading-indicator p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive Design for Two-Column Layout */
+@media (max-width: 1200px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .preview-column {
+        position: static;
+        max-height: none;
+    }
+
+    .cv-preview {
+        zoom: 1;
     }
 }

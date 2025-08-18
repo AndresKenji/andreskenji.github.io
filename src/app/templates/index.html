@@ -21,14 +21,15 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="container">
-                <div class="form-layout">
-                    <!-- Form -->
-                    <div class="form-container">
+                <div class="app-layout">
+                    <!-- Form Column -->
+                    <div class="form-column">
+                        <div class="form-container">
                             <div class="form-header">
                                 <h2>Your Information</h2>
                                 <div class="template-selector">
                                     <label for="template-select">Choose Template:</label>
-                                    <select id="template-select" v-model="selectedTemplate">
+                                    <select id="template-select" v-model="selectedTemplate" @change="loadPreview">
                                         {% for tmpl in templates %}
                                         <option value="{{ tmpl.id }}">{{ tmpl.name }}</option>
                                         {% endfor %}
@@ -306,6 +307,44 @@
                                     {% raw %}[[ errorMessage ]]{% endraw %}
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <!-- Preview Column -->
+                    <div class="preview-column">
+                        <div class="preview-container">
+                            <div class="preview-header">
+                                <h2>Preview</h2>
+                                <div class="preview-actions">
+                                    <button type="button" @click="refreshPreview" class="btn btn-secondary" :disabled="isLoading">
+                                        <i class="fas fa-refresh"></i> Refresh
+                                    </button>
+                                    <button type="button" @click="generateFinalCV" class="btn btn-primary" :disabled="isLoading">
+                                        <i class="fas fa-download"></i> Generate CV
+                                    </button>
+                                    <button type="button" @click="exportPDF" class="btn btn-success" :disabled="isLoading">
+                                        <i class="fas fa-file-pdf"></i> Export PDF
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="preview-content">
+                                <div v-if="isLoading" class="loading-indicator">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Generating preview...</p>
+                                </div>
+
+                                <div v-else-if="previewHTML" class="preview-frame">
+                                    {% raw %}
+                                    <div v-html="previewHTML" class="cv-preview"></div>
+                                    {% endraw %}
+                                </div>
+
+                                <div v-else class="preview-placeholder">
+                                    <i class="fas fa-eye"></i>
+                                    <p>Fill in your information and click "Refresh" to see a preview of your CV.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
