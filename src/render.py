@@ -37,32 +37,68 @@ def render_resume(
     if img_src.exists():
         shutil.copytree(img_src, img_dst, dirs_exist_ok=True)
 
-def render_resume_with_template(resume: Resume, template_name: str = "classic") -> str:
-    template_manager: TemplateManager = TemplateManager()
+def render_resume_to_pdf(
+    resume: Resume,
+    template_name: str = "creative_pro",
+    output_path: str = "docs/resume.pdf"
+) -> None:
+    """
+    Genera un PDF directamente desde HTML usando Playwright.
+    Playwright renderiza exactamente como Chrome, preservando todos los estilos.
+    """
+    # Cargar el template
+    env: Environment = Environment(loader=FileSystemLoader("src/templates"))
+    template: Template = env.get_template(template_name + ".html")
 
-    if not template_manager.template_exists(template_name):
-        return render_resume_legacy(resume)
+    # Renderizar HTML con los datos del resume
+    html_content: str = template.render(resume=resume)
+
+    # Crear el directorio de salida si no existe
+    output_file: Path = Path(output_path)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    # Crear archivo temporal HTML
+    temp_html = Path("temp_resume.html")
+    temp_html.write_text(html_content, encoding='utf-8')
 
     try:
-        env: Environment = template_manager.get_template_environment(template_name)
-        template: Template = env.get_template("layout.html")
-        html_content: str = template.render(resume=resume)
+        from playwright.sync_api import sync_playwright
 
-        css_path: Path = Path(f"app/cv-templates/{template_name}/static/css/styles.css")
-        if css_path.exists():
-            css_content: str = css_path.read_text(encoding='utf-8')
-            html_content = html_content.replace(
-                '<link rel="stylesheet" href="static/css/styles.css">',
-                f'<style>{css_content}</style>'
+        logger.info(f"Generating PDF with Playwright: {output_path}")
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+
+            page.goto(f"file://{temp_html.absolute()}")
+            page.wait_for_load_state('networkidle')
+
+            page.pdf(
+                path=output_path,
+                format='A4',
+                margin={
+                    'top': '0',
+                    'right': '0',
+                    'bottom': '0',
+                    'left': '0'
+                },
+                print_background=True,  # Incluir colores y gradientes
+                prefer_css_page_size=True
             )
 
-        return html_content
-    except Exception as e:
-        logger.error(f"Error rendering template {template_name}: {e}")
-        return render_resume_legacy(resume)
+            browser.close()
 
-def render_resume_legacy(resume: Resume) -> str:
-    env: Environment = Environment(loader=FileSystemLoader("src/templates"))
-    template: Template = env.get_template("layout.html")
-    return template.render(resume=resume)
+        logger.info(f"PDF generated successfully with Playwright: {output_path}")
+
+    except ImportError:
+        logger.error("Playwright not installed. Install with: pip install playwright")
+        logger.error("Then run: playwright install chromium")
+        raise
+    except Exception as e:
+        logger.error(f"Error generating PDF with Playwright: {e}")
+        logger.error("Make sure to run 'playwright install chromium' after installing playwright")
+        raise
+    finally:
+        if temp_html.exists():
+            temp_html.unlink()
 

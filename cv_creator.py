@@ -23,12 +23,18 @@ parser.add_argument(
     '--template',
     type=str,
     default='classic',
-    help='Path to the HTML template file. Default is "src/templates/clasic.html"'
+    help='Template name to use. Default is "classic". Available: classic, creative_pro'
 )
 
 parser.add_argument(
     '--web',
     help='Start the CV Builder web application.',
+    action='store_true',
+)
+
+parser.add_argument(
+    '--pdf',
+    help='Generate PDF directly instead of HTML (preserves all styles).',
     action='store_true',
 )
 
@@ -40,6 +46,9 @@ logger: logging.Logger = setup_logger(
     format_string='%(levelname)s - %(asctime)s - %(name)s - %(message)s',
     include_file_handler=False,
 )
+
+if not os.path.exists(args.resume):
+    logger.error(f"Resume file not found at {args.resume}. Please provide a valid path.")
 
 def load_resume(path: str = args.resume) -> Resume:
 
@@ -56,11 +65,22 @@ def main() -> None:
         logger.info("Open http://localhost:5000 in your browser to create your CV")
         app.run(debug=True, host='0.0.0.0', port=5000)
     else:
-
         logger.info("Generating CV from resume.json...")
         resume: Resume = load_resume()
-        render_resume(resume=resume, template_name=args.template)
-        logger.info("CV generated successfully at docs/index.html")
+
+        if args.pdf:
+            # Generar PDF directamente
+            from src.render import render_resume_to_pdf
+            output_path = "docs/resume.pdf"
+            render_resume_to_pdf(resume=resume, template_name=args.template, output_path=output_path)
+            logger.info(f"PDF generated successfully at {output_path}")
+            logger.info("Tip: PDF maintains all styles including gradients, flexbox layouts, and fonts")
+        else:
+            # Generar HTML tradicional
+            render_resume(resume=resume, template_name=args.template)
+            logger.info("CV generated successfully at docs/index.html")
+            logger.info("Tip: Use 'python main.py --pdf' to generate PDF with preserved styles")
+
         logger.info("Tip: Use 'python main.py --web' to start the interactive CV builder")
 
 if __name__ == "__main__":

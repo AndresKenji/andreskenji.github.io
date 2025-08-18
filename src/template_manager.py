@@ -20,7 +20,6 @@ class TemplateManager:
         self.templates_dir.mkdir(parents=True, exist_ok=True)
 
     def get_available_templates(self) -> List[Dict[str, Any]]:
-        """Get list of available templates with their metadata"""
         templates = []
 
         if not self.templates_dir.exists():
@@ -35,7 +34,6 @@ class TemplateManager:
         return templates
 
     def _load_template_metadata(self, template_dir: Path) -> Dict[str, Any]:
-        """Load template metadata from template.json"""
         try:
             metadata_file: Path = template_dir / "template.json"
             with open(metadata_file, 'r', encoding='utf-8') as f:

@@ -21,18 +21,17 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="container">
-                <div class="app-layout">
-                    <!-- Sidebar - Form -->
-                    <aside class="form-sidebar">
-                        <div class="form-container">
+                <div class="form-layout">
+                    <!-- Form -->
+                    <div class="form-container">
                             <div class="form-header">
                                 <h2>Your Information</h2>
                                 <div class="template-selector">
                                     <label for="template-select">Choose Template:</label>
                                     <select id="template-select" v-model="selectedTemplate">
-                                        <option v-for="tmpl in templates" :key="tmpl.id" :value="tmpl.id">
-                                            [[ tmpl.name ]]
-                                        </option>
+                                        {% for tmpl in templates %}
+                                        <option value="{{ tmpl.id }}">{{ tmpl.name }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -94,12 +93,14 @@
                                 <div class="form-section">
                                     <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
                                     <div v-for="(job, index) in resumeData.work" :key="index" class="dynamic-section">
+                                        {% raw %}
                                         <div class="section-header">
                                             <h4>Job [[ index + 1 ]]</h4>
                                             <button type="button" @click="removeWork(index)" class="btn-remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
+                                        {% endraw %}
                                         <div class="form-row">
                                             <div class="form-group">
                                                 <label>Company Name</label>
@@ -138,12 +139,14 @@
                                 <div class="form-section">
                                     <h3><i class="fas fa-graduation-cap"></i> Education</h3>
                                     <div v-for="(edu, index) in resumeData.education" :key="index" class="dynamic-section">
+                                        {% raw %}
                                         <div class="section-header">
                                             <h4>Education [[ index + 1 ]]</h4>
                                             <button type="button" @click="removeEducation(index)" class="btn-remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
+                                        {% endraw %}
                                         <div class="form-group">
                                             <label>Institution</label>
                                             <input type="text" v-model="edu.institution">
@@ -155,7 +158,10 @@
                                                     <option value="Associate">Associate</option>
                                                     <option value="Bachelor">Bachelor</option>
                                                     <option value="Master">Master</option>
-                                                    <option value="PhD">PhD</option>
+                                                    <option value="Doctoral">Doctoral</option>
+                                                    <option value="Technical">Technical</option>
+                                                    <option value="Diploma">Diploma</option>
+                                                    <option value="OnlineCourse">Online Course</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -187,12 +193,14 @@
                                 <div class="form-section">
                                     <h3><i class="fas fa-cogs"></i> Skills</h3>
                                     <div v-for="(skill, index) in resumeData.skills" :key="index" class="dynamic-section">
+                                        {% raw %}
                                         <div class="section-header">
                                             <h4>Skill [[ index + 1 ]]</h4>
                                             <button type="button" @click="removeSkill(index)" class="btn-remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
+                                        {% endraw %}
                                         <div class="form-row">
                                             <div class="form-group">
                                                 <label>Skill Name</label>
@@ -219,46 +227,87 @@
                                     </button>
                                 </div>
 
+                                <!-- Languages -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-language"></i> Languages</h3>
+                                    <div v-for="(lang, index) in resumeData.languages" :key="index" class="dynamic-section">
+                                        {% raw %}
+                                        <div class="section-header">
+                                            <h4>Language [[ index + 1 ]]</h4>
+                                            <button type="button" @click="removeLanguage(index)" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        {% endraw %}
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Language</label>
+                                                <input type="text" v-model="lang.language" placeholder="English">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Fluency</label>
+                                                <select v-model="lang.fluency">
+                                                    <option value="Novice">Novice</option>
+                                                    <option value="Intermediate">Intermediate</option>
+                                                    <option value="Advanced">Advanced</option>
+                                                    <option value="Superior">Superior</option>
+                                                    <option value="Native">Native</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" @click="addLanguage" class="btn-add">
+                                        <i class="fas fa-plus"></i> Add Language
+                                    </button>
+                                </div>
+
+                                <!-- Interests -->
+                                <div class="form-section">
+                                    <h3><i class="fas fa-heart"></i> Interests</h3>
+                                    <div v-for="(interest, index) in resumeData.interests" :key="index" class="dynamic-section">
+                                        {% raw %}
+                                        <div class="section-header">
+                                            <h4>Interest [[ index + 1 ]]</h4>
+                                            <button type="button" @click="removeInterest(index)" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        {% endraw %}
+                                        <div class="form-group">
+                                            <label>Interest Name</label>
+                                            <input type="text" v-model="interest.name" placeholder="Photography">
+                                        </div>
+                                    </div>
+                                    <button type="button" @click="addInterest" class="btn-add">
+                                        <i class="fas fa-plus"></i> Add Interest
+                                    </button>
+                                </div>
+
                                 <!-- Action Buttons -->
                                 <div class="form-actions">
                                     <button type="button" @click="previewCV" class="btn btn-primary" :disabled="isLoading">
                                         <i class="fas fa-eye"></i> Preview CV
                                     </button>
-                                    <button type="button" @click="downloadProject" class="btn btn-secondary" :disabled="isLoading">
-                                        <i class="fas fa-download"></i> Download Project
+                                    <button type="button" @click="generateFinalCV" class="btn btn-success" :disabled="isLoading">
+                                        <i class="fas fa-save"></i> Generate Final CV
                                     </button>
-                                    <button type="button" @click="exportPDF" class="btn btn-success" :disabled="isLoading">
+                                    <button type="button" @click="exportPDF" class="btn btn-secondary" :disabled="isLoading">
                                         <i class="fas fa-file-pdf"></i> Export PDF
                                     </button>
                                 </div>
+
+                                <!-- Success/Error Messages -->
+                                <div v-if="showSuccessMessage" class="alert alert-success" style="display: none;">
+                                    <i class="fas fa-check-circle"></i>
+                                    {% raw %}[[ successMessage ]]{% endraw %}
+                                </div>
+                                <div v-if="showErrorMessage" class="alert alert-error" style="display: none;">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    {% raw %}[[ errorMessage ]]{% endraw %}
+                                </div>
                             </form>
                         </div>
-                    </aside>
-
-                    <!-- Main - Preview -->
-                    <main class="preview-area">
-                        <div class="preview-container">
-                            <div class="preview-header">
-                                <h2>Live Preview</h2>
-                                <div class="preview-actions">
-                                    <button @click="refreshPreview" class="btn-icon" title="Refresh Preview">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="preview-content" id="preview-content">
-                                <div v-if="isLoading" class="loading">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                    <p>Generating preview...</p>
-                                </div>
-                                <div v-else-if="previewHTML" v-html="previewHTML" class="cv-preview"></div>
-                                <div v-else class="preview-placeholder">
-                                    <i class="fas fa-eye"></i>
-                                    <p>Click "Preview CV" to see your resume</p>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
+                    </div>
                 </div>
             </div>
         </main>
@@ -276,7 +325,6 @@
         </footer>
     </div>
 
-    <!-- Vue.js and App Script -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>

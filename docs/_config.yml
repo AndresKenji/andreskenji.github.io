@@ -1,0 +1,33 @@
+title: Oscar A. Rodríguez CV
+description: Curriculum Vitae of Oscar Andrés Rodríguez Fernández
+author: Oscar Andrés Rodríguez Fernández
+github_username: AndresKenji
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# GitHub Pages specific settings
+repository: AndresKenji/andreskenji.github.io
+github: [metadata]
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - backend/
+  - frontend/
+  - docker-compose.yml
+  - .env
+  - env/
+  - app/
+  - src/
+  - app.py
+  - cv_creator.py
+  - requirements.txt
+  - .env.example
+
+# Include files
+include:
+  - static/
