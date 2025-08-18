@@ -2,53 +2,55 @@ import json
 import os
 import shutil
 import zipfile
-from pathlib import Path
-from typing import Dict, Any
 from io import BytesIO
+from pathlib import Path
+from typing import Dict, Any, Literal
 
 from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for
 from flask_cors import CORS
+from flask.wrappers import Response
 from dotenv import load_dotenv
 
 from src.models import Resume
 from src.render import render_resume_with_template
 from src.template_manager import TemplateManager
 
-# Load environment variables
 load_dotenv()
 
-app = Flask(__name__,
+app: Flask = Flask(__name__,
            template_folder='app/templates',
            static_folder='app/static')
 CORS(app)
 
-# Initialize template manager
-template_manager = TemplateManager()
+template_manager: TemplateManager = TemplateManager()
 
 @app.route('/')
-def index():
+def index() -> str:
     """Main page with CV editor interface"""
     templates = template_manager.get_available_templates()
     return render_template('index.html', templates=templates)
 
 @app.route('/api/templates')
-def get_templates():
-    """API endpoint to get available templates"""
+def get_templates() -> Response:
+
     return jsonify(template_manager.get_available_templates())
 
 @app.route('/api/preview', methods=['POST'])
-def preview_cv():
-    """Generate preview of CV with selected template"""
+def preview_cv() -> Response | tuple[Response, Literal[400]]:
+
     try:
-        data = request.json
-        resume_data = data.get('resume_data')
-        template_name = data.get('template', 'classic')
+        data: Any | None = request.json
+        if not data:
+            return jsonify({
+            'success': False,
+            'error': "No se recibio data"
+        }), 400
+        resume_data: dict = data.get('resume_data')
+        template_name: str = data.get('template', 'classic')
 
-        # Validate resume data
-        resume = Resume(**resume_data)
+        resume: Resume = Resume(**resume_data)
 
-        # Generate HTML
-        html_content = render_resume_with_template(resume, template_name)
+        html_content: str = render_resume_with_template(resume, template_name)
 
         return jsonify({
             'success': True,
@@ -61,23 +63,25 @@ def preview_cv():
         }), 400
 
 @app.route('/api/download-project', methods=['POST'])
-def download_project():
-    """Generate and download complete project with user's data"""
+def download_project() -> Response | tuple[Response, Literal[400]]:
+
     try:
         data = request.json
-        resume_data = data.get('resume_data')
-        template_name = data.get('template', 'classic')
-        project_name = data.get('project_name', 'my-cv-project')
+        if not data:
+            return jsonify({
+            'success': False,
+            'error': "No se recibio data"
+        }), 400
+        resume_data: Dict = data.get('resume_data')
+        template_name: str = data.get('template', 'classic')
+        project_name: str = data.get('project_name', 'my-cv-project')
 
-        # Validate resume data
-        resume = Resume(**resume_data)
+        resume: Resume = Resume(**resume_data)
 
-        # Create temporary directory for project
-        temp_dir = Path(f'/tmp/{project_name}')
+        temp_dir: Path = Path(f'/tmp/{project_name}')
         temp_dir.mkdir(exist_ok=True)
 
-        # Generate project files
-        project_zip = create_project_package(resume, template_name, project_name, temp_dir)
+        project_zip: BytesIO = create_project_package(resume, template_name, project_name, temp_dir)
 
         return send_file(
             project_zip,
@@ -93,18 +97,22 @@ def download_project():
         }), 400
 
 @app.route('/api/export-pdf', methods=['POST'])
-def export_pdf():
+def export_pdf() -> Response | tuple[Response, Literal[400]]:
     """Export CV as PDF"""
     try:
-        data = request.json
-        resume_data = data.get('resume_data')
-        template_name = data.get('template', 'classic')
+        data: Any | None = request.json
+        if not data:
+            return jsonify({
+            'success': False,
+            'error': "No se recibio data"
+        }), 400
 
-        # Validate resume data
-        resume = Resume(**resume_data)
+        resume_data: Dict = data.get('resume_data')
+        template_name: str = data.get('template', 'classic')
 
-        # Generate PDF
-        pdf_buffer = generate_pdf(resume, template_name)
+        resume: Resume = Resume(**resume_data)
+
+        pdf_buffer: BytesIO = generate_pdf(resume, template_name)
 
         return send_file(
             pdf_buffer,
@@ -122,12 +130,10 @@ def export_pdf():
 def create_project_package(resume: Resume, template_name: str, project_name: str, temp_dir: Path) -> BytesIO:
     """Create a complete project package for download"""
 
-    # Create project structure
-    project_dir = temp_dir / project_name
+    project_dir: Path = temp_dir / project_name
     project_dir.mkdir(exist_ok=True)
 
-    # Copy base project files
-    base_files = [
+    base_files: list[str] = [
         'main.py',
         'requirements.txt',
         'LICENSE',
@@ -137,56 +143,47 @@ def create_project_package(resume: Resume, template_name: str, project_name: str
         if Path(file).exists():
             shutil.copy(file, project_dir / file)
 
-    # Create src directory structure
-    src_dir = project_dir / 'src'
+    src_dir: Path = project_dir / 'src'
     src_dir.mkdir(exist_ok=True)
 
-    # Copy source files
     shutil.copytree('src/models.py', src_dir / 'models.py', dirs_exist_ok=True)
     shutil.copytree('src/logging_config.py', src_dir / 'logging_config.py', dirs_exist_ok=True)
 
-    # Create data directory and save user's resume
-    data_dir = src_dir / 'data'
+    data_dir: Path = src_dir / 'data'
     data_dir.mkdir(exist_ok=True)
 
     with open(data_dir / 'resume.json', 'w', encoding='utf-8') as f:
         json.dump(resume.model_dump(), f, indent=2, ensure_ascii=False)
 
-    # Copy selected template
-    template_dir = src_dir / 'templates'
+    template_dir: Path = src_dir / 'templates'
     template_dir.mkdir(exist_ok=True)
 
-    template_path = template_manager.get_template_path(template_name)
+    template_path: Path = template_manager.get_template_path(template_name)
     shutil.copytree(template_path, template_dir, dirs_exist_ok=True)
 
-    # Copy static files for the template
-    static_dir = src_dir / 'static'
-    template_static = template_manager.get_template_static_path(template_name)
+    static_dir: Path = src_dir / 'static'
+    template_static: Path = template_manager.get_template_static_path(template_name)
     if template_static.exists():
         shutil.copytree(template_static, static_dir, dirs_exist_ok=True)
 
-    # Create render.py adapted for single template
     create_render_file(src_dir, template_name)
 
-    # Create README for the user
     create_project_readme(project_dir, project_name, template_name)
 
-    # Create ZIP file
-    zip_buffer = BytesIO()
+    zip_buffer: BytesIO = BytesIO()
     with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
         for file_path in project_dir.rglob('*'):
             if file_path.is_file():
-                arcname = file_path.relative_to(temp_dir)
+                arcname: Path = file_path.relative_to(temp_dir)
                 zip_file.write(file_path, arcname)
 
     zip_buffer.seek(0)
 
-    # Clean up temp directory
     shutil.rmtree(temp_dir)
 
     return zip_buffer
 
-def create_render_file(src_dir: Path, template_name: str):
+def create_render_file(src_dir: Path, template_name: str) -> None:
     """Create a simplified render.py file for the user's project"""
     render_content = f'''import shutil
 from pathlib import Path
@@ -219,9 +216,9 @@ def render_resume(resume: Resume, output_path="docs/index.html"):
     with open(src_dir / 'render.py', 'w', encoding='utf-8') as f:
         f.write(render_content)
 
-def create_project_readme(project_dir: Path, project_name: str, template_name: str):
+def create_project_readme(project_dir: Path, project_name: str, template_name: str) -> None:
     """Create README for the user's project"""
-    readme_content = f'''# {project_name}
+    readme_content: str = f'''# {project_name}
 
 This is your personalized CV project generated from the CV Builder tool.
 
@@ -273,14 +270,13 @@ Generated by CV Builder - https://github.com/AndresKenji/andreskenji.github.io
         f.write(readme_content)
 
 def generate_pdf(resume: Resume, template_name: str) -> BytesIO:
-    """Generate PDF from resume data"""
+
     try:
         import weasyprint
 
-        html_content = render_resume_with_template(resume, template_name)
+        html_content: str = render_resume_with_template(resume, template_name)
 
-        # Create PDF
-        pdf_buffer = BytesIO()
+        pdf_buffer: BytesIO = BytesIO()
         weasyprint.HTML(string=html_content).write_pdf(pdf_buffer)
         pdf_buffer.seek(0)
 

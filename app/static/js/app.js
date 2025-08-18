@@ -121,18 +121,21 @@ createApp({
                 publications: [],
                 languages: [{
                     language: 'English',
-                    fluency: { value: 'Native' }
+                    fluency: 'Native'
                 }, {
                     language: 'Spanish',
-                    fluency: { value: 'Intermediate' }
+                    fluency: 'Intermediate'
                 }],
                 interests: [{
-                    name: 'Photography'
+                    name: 'Photography',
+                    keywords: []
                 }, {
-                    name: 'Travel'
+                    name: 'Travel',
+                    keywords: []
                 }],
                 references: [],
-                projects: []
+                projects: [],
+                certificates: []
             };
         },
 
@@ -286,22 +289,86 @@ createApp({
         },
 
         prepareResumeData() {
-            // Convert string levels to proper format for skills
+            // Deep clone the data
             const preparedData = JSON.parse(JSON.stringify(this.resumeData));
 
+            // Transform skills data
             if (preparedData.skills) {
-                preparedData.skills = preparedData.skills.map(skill => ({
-                    ...skill,
-                    level: { value: parseInt(skill.level) },
-                    level_percent: parseInt(skill.level) * 20
+                preparedData.skills = preparedData.skills.map(skill => {
+                    // Convert numeric level to enum string
+                    const levelMap = {
+                        '1': 'Novice',
+                        '2': 'Competent',
+                        '3': 'Competent',
+                        '4': 'Proficient',
+                        '5': 'Master'
+                    };
+
+                    return {
+                        name: skill.name,
+                        level: levelMap[skill.level] || 'Competent',
+                        keywords: skill.keywords || [],
+                        color: skill.color || '#0070c0'
+                    };
+                });
+            }
+
+            // Transform education data
+            if (preparedData.education) {
+                preparedData.education = preparedData.education.map(edu => ({
+                    institution: edu.institution || '',
+                    url: edu.url || '',
+                    area: edu.area || '',
+                    study_type: edu.study_type || 'Bachelor',
+                    start_date: edu.start_date || '',
+                    end_date: edu.end_date || '',
+                    score: edu.score || '',
+                    courses: edu.courses || []
                 }));
             }
 
-            if (preparedData.education) {
-                preparedData.education = preparedData.education.map(edu => ({
-                    ...edu,
-                    study_type: { value: edu.study_type }
+            // Transform languages data
+            if (preparedData.languages) {
+                preparedData.languages = preparedData.languages.map(lang => ({
+                    language: lang.language,
+                    fluency: lang.fluency?.value || lang.fluency || 'Intermediate'
                 }));
+            }
+
+            // Transform interests data
+            if (preparedData.interests) {
+                preparedData.interests = preparedData.interests.map(interest => ({
+                    name: interest.name,
+                    keywords: interest.keywords || []
+                }));
+            }
+
+            // Add missing required fields
+            if (!preparedData.certificates) {
+                preparedData.certificates = [];
+            }
+
+            // Ensure all arrays exist
+            preparedData.volunteer = preparedData.volunteer || [];
+            preparedData.awards = preparedData.awards || [];
+            preparedData.publications = preparedData.publications || [];
+            preparedData.references = preparedData.references || [];
+            preparedData.projects = preparedData.projects || [];
+
+            // Ensure required nested fields exist
+            if (preparedData.basics && preparedData.basics.location) {
+                const loc = preparedData.basics.location;
+                preparedData.basics.location = {
+                    address: loc.address || '',
+                    postal_code: loc.postal_code || '',
+                    city: loc.city || '',
+                    country_code: loc.country_code || '',
+                    region: loc.region || ''
+                };
+            }
+
+            if (preparedData.basics && !preparedData.basics.profiles) {
+                preparedData.basics.profiles = [];
             }
 
             return preparedData;

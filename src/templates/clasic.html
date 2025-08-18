@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ resume.basics.name }} - Resume</title>
+    <style>
+        /*1. Configuración global y de impresión*/
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+
+            html,
+            body {
+                width: 100%;
+                height: auto;
+                page-break-after: always;
+            }
+
+            .page-wrapper {
+                page-break-after: always;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* Centra la página en pantallas anchas */
+            background: #f4f4f4;
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        /* 2. Contenedor general (ancho máximo 21 cm)*/
+
+        .page-container {
+            width: 100%;
+            max-width: 22cm;
+            margin: 5px 0;
+        }
+
+        /* 3. Wrapper A4 (ancho completo de .page-container, alto mínimo 29.7 cm)*/
+
+        .page-wrapper {
+            background: #fff;
+            width: 100%;
+            /* Ocupa el ancho permitido por .page-container */
+            min-height: 29.7cm;
+            /* Altura mínima de A4 */
+            display: flex;
+            /* Para colocar sidebar + main en fila */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        /*  4. Sidebar (columna izquierda)*/
+
+        .sidebar {
+            width: 35%;
+            background-color: #dce3eb;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .sidebar h3 {
+            margin-top: 20px;
+            color: #0070c0;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 5. Contenido principal (columna derecha)*/
+
+        .main {
+            width: 65%;
+            padding: 0 30px;
+            overflow: hidden;
+        }
+
+        /* 6. Tipografía de encabezados*/
+
+        h1 {
+            font-size: 32px;
+            margin: 15px 0 5px 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #777;
+            margin: 0 0 20px 0;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin: 30px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 7. Secciones y experiencia*/
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .experience {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* 8. Aptitudes con <progress>*/
+
+        .skill-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            width: 120px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 12px;
+            text-align: left;
+        }
+
+        .skill-bar {
+            flex: 1;
+            height: 16px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        /* Track (fondo) en Chrome/Edge/Safari */
+        .skill-bar::-webkit-progress-bar {
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Relleno (value) en Chrome/Edge/Safari */
+        .skill-bar::-webkit-progress-value {
+            background-color: #0070c0;
+            border-radius: 8px;
+        }
+
+        /* Relleno en Firefox */
+        .skill-bar::-moz-progress-bar {
+            background-color: #0070c0;
+            border-radius: 8px;
+        }
+
+        /* Relleno en IE/Edge Legacy */
+        .skill-bar::-ms-fill {
+            background-color: #0070c0;
+            border-radius: 8px;
+        }
+
+        /* Impresión: forzar negro si no imprime color de fondo */
+        @media print {
+
+            /* Mostrar colores y fondos */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Forzar visibilidad de las barras */
+            progress.skill-bar {
+                appearance: none;
+                -webkit-appearance: none;
+                border: 1px solid #000;
+                width: 100%;
+                height: 10px;
+                background: #eee;
+                color: #000;
+            }
+
+            progress.skill-bar::-webkit-progress-bar {
+                background-color: #eee;
+            }
+
+            progress.skill-bar::-webkit-progress-value {
+                background-color: #007bff;
+            }
+
+            progress.skill-bar::-moz-progress-bar {
+                background-color: #007bff;
+            }
+
+            /* Mostrar los tags correctamente */
+            .skill-tags span {
+                display: inline-block;
+                background-color: #d0e7ff;
+                color: #000;
+                padding: 2px 8px;
+                border-radius: 12px;
+                font-size: 12px;
+                margin: 2px 4px 4px 0;
+            }
+        }
+
+        .skill-value {
+            width: 40px;
+            font-size: 13px;
+            text-align: right;
+            margin-left: 8px;
+        }
+
+        .skill-keywords {
+            margin: 6px 0 14px 132px;
+            /* Alinea con el inicio de la barra */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background-color: hsl(216, 73%, 55%);
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        /* 9. Contacto, intereses y lenguajes*/
+
+        .contact,
+        .interest,
+        .languages {
+            text-align: left;
+            margin-top: 20px;
+            font-size: small;
+        }
+
+        .contact-item {
+            margin-top: 12px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-text {
+            margin-left: 8px;
+            word-break: break-all;
+        }
+
+        .contact-link:hover .contact-icon,
+        .contact-link:hover .contact-text {
+            color: #005080;
+        }
+
+        /* 10. Tablas y párrafos*/
+
+        p {
+            text-align: left;
+            font-size: small;
+            margin: 0 0 8px;
+        }
+
+        .languages table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: small;
+        }
+
+        .languages th,
+        .languages td {
+            padding: 4px 6px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .languages th td {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .interest ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="page-wrapper">
+            <div class="sidebar">
+                <img src="{{resume.basics.image}}" alt="Profile Picture">
+                <h3>ABOUT ME</h3>
+                <p>{{ resume.basics.summary }}</p>
+
+                <div class="contact">
+                    <h3>CONTACT</h3>
+                    {# Linkedin #}
+                    <div class="contact-item">
+                        <a href="{{ resume.basics.url }}" class="contact-link" target="_blank" rel="noopener">
+                            <!-- SVG de LinkedIn -->
+                            <svg class="contact-icon" height="20px" width="20px" viewBox="0 0 382 382" fill="#0077B7"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                         C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z
+                         M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345
+                         c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                         c5.554,0,10.056,4.502,10.056,10.056V329.844z
+                         M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666
+                         S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666
+                         S109.208,123.432,86.748,123.432z
+                         M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                         c-5.106,0-9.246-4.14-9.246-9.246v-84.168
+                         c0-12.556,3.683-55.021-32.813-55.021
+                         c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                         c0,5.106-4.139,9.246-9.246,9.246h-44.426
+                         c-5.106,0-9.246-4.14-9.246-9.246V149.593
+                         c0-5.106,4.14-9.246,9.246-9.246h44.426
+                         c5.106,0,9.246,4.14,9.246,9.246v15.655
+                         c10.497-15.753,26.097-27.912,59.312-27.912
+                         c73.552,0,73.131,68.716,73.131,106.472
+                         L341.91,330.654L341.91,330.654z" />
+                            </svg>
+                            <span class="contact-text">{{ resume.basics.url }}</span>
+                        </a>
+                    </div>
+
+                    {# Email #}
+                    <div class="contact-item">
+                        <a href="mailto:{{ resume.basics.email }}" class="contact-link">
+                            <!-- SVG de correo -->
+                            <svg class="contact-icon" height="20px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 8L8.4499 11.6333C9.7329 12.4886 10.3745 12.9163 11.0678 13.0825C11.6806 13.2293 12.3194 13.2293 12.9322 13.0825C13.6255 12.9163 14.2671 12.4886 15.5501 11.6333L21 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z"
+                                    stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="contact-text">{{ resume.basics.email }}</span>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="interest">
+                    <h3>INTEREST</h3>
+                    <ul>
+                        {% for interest in resume.interests %}
+                        <li>{{ interest.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="languages">
+                    <h3>LANGUAGES</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Fluency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lang in resume.languages %}
+                            <tr>
+                                <td>{{ lang.language }}</td>
+                                <td>{{lang.fluency.value}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="main">
+                <h1>{{ resume.basics.name }}</h1>
+                <h2>{{ resume.basics.label }}</h2>
+
+                <div class="section">
+                    <h3>EDUCATION</h3>
+                    {% for edu in resume.education %}
+                    <div>
+                        <a href="{{edu.url}}" class="contact-link" target="_blank"><strong>{{ edu.institution
+                                }}</strong></a> ({{ edu.start_date }} -> {{ edu.end_date }})<br>
+                        {{ edu.study_type.value }}'s {{edu.area}}
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+
+                <div class="section">
+                    <h3>WORK EXPERIENCE</h3>
+                    {% for job in resume.work %}
+                    <div class="experience">
+                        <a href="{{job.url}}" class="contact-link" target="_blank"><strong>{{ job.name }}</strong> - {{
+                            job.position }}</a>
+                        {{ job.start_date }} -> {{ job.end_date }}<br>
+                        <p>{{ job.summary }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="section">
+                    <h3>APTITUDES</h3>
+                    {% for skill in resume.skills %}
+                    <div class="skill-row">
+                        <span class="skill-name">{{ skill.name }}</span>
+                        <progress class="skill-bar" max="100" value="{{ skill.level_percent }}"></progress>
+                        <span class="skill-value">{{ skill.level_percent }}%</span>
+                    </div>
+                    <div class="skill-keywords">
+                        {% for keyword in skill.keywords %}
+                        <span class="skill-tag">{{ keyword }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>

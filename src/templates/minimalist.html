@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ basics.name }} - {{ basics.label }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px;
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 0.95em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+        .contact-item i {
+            margin-right: 8px;
+            color: #4A90E2;
+            width: 16px;
+        }
+
+        .contact-item a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Summary */
+        .summary-text {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 25px;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .degree-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1.05em;
+        }
+
+        .gpa-score {
+            background: #f0f7ff;
+            color: #4A90E2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .institution-name {
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .education-details i {
+            color: #4A90E2;
+            width: 14px;
+        }
+
+        .course-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .course-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 4px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .course-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4A90E2;
+            font-weight: bold;
+        }
+
+        /* Technical Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: #f8f9fa;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: #4A90E2;
+            color: white;
+            border-color: #4A90E2;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 30px;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1.05em;
+            margin-bottom: 3px;
+        }
+
+        .company-name {
+            color: #4A90E2;
+            font-weight: 500;
+            font-size: 1em;
+        }
+
+        .job-details {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 8px 0 12px 0;
+        }
+
+        .job-details i {
+            color: #4A90E2;
+            width: 14px;
+        }
+
+        .job-description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .job-highlights {
+            list-style: none;
+        }
+
+        .job-highlights li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .job-highlights li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4A90E2;
+            font-weight: bold;
+        }
+
+        /* Volunteer */
+        .volunteer-item {
+            margin-bottom: 25px;
+        }
+
+        .volunteer-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+        }
+
+        .volunteer-org {
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        /* Strengths */
+        .strength-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4A90E2;
+        }
+
+        .strength-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .strength-icon {
+            color: #4A90E2;
+            font-size: 1.2em;
+            margin-right: 12px;
+            width: 20px;
+        }
+
+        .strength-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1.05em;
+        }
+
+        .strength-description {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+            margin-left: 32px;
+        }
+
+        /* References */
+        .reference-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .reference-name {
+            font-weight: 600;
+            color: #4A90E2;
+            margin-bottom: 3px;
+        }
+
+        .reference-contact {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .reference-text {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Awards */
+        .award-item {
+            margin-bottom: 15px;
+        }
+
+        .award-title {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .award-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .footer-left a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .education-header,
+            .job-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .gpa-score {
+                align-self: flex-start;
+            }
+
+            .footer {
+                padding: 20px;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: none;
+            }
+
+            .footer {
+                background: white;
+            }
+        }
+
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .language-name {
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .language-level {
+            font-size: 0.85em;
+            color: #4A90E2;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>{{ basics.name }}</h1>
+            <div class="subtitle">{{ basics.label }}</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    {{ basics.phone }}
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:{{ basics.email }}">{{ basics.email }}</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ basics.location.city }}, {{ basics.location.region }}
+                </div>
+                {% if basics.url %}
+                <div class="contact-item">
+                    <i class="fas fa-link"></i>
+                    <a href="{{ basics.url }}" target="_blank">{{ basics.url }}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Summary -->
+                {% if basics.summary %}
+                <div class="section">
+                    <h2 class="section-title">Summary</h2>
+                    <div class="summary-text">{{ basics.summary }}</div>
+                </div>
+                {% endif %}
+
+                <!-- Education -->
+                {% if education %}
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    {% for edu in education %}
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <div class="degree-title">{{ edu.study_type.value }}</div>
+                            </div>
+                            {% if edu.score %}
+                            <div class="gpa-score">
+                                GPA<br>{{ edu.score }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="institution-name">{{ edu.institution }}</div>
+                        <div class="education-details">
+                            <span><i class="fas fa-calendar"></i> {{ edu.start_date }} - {{ edu.end_date }}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> {{ edu.area }}</span>
+                        </div>
+                        {% if edu.courses %}
+                        <ul class="course-list">
+                            {% for course in edu.courses %}
+                            <li>{{ course }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Technical Skills -->
+                {% if skills %}
+                <div class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="skills-grid">
+                        {% for skill in skills %}
+                        <div class="skill-tag">{{ skill.name }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Languages -->
+                {% if languages %}
+                <div class="section">
+                    <h2 class="section-title">Languages</h2>
+                    {% for language in languages %}
+                    <div class="language-item">
+                        <span class="language-name">{{ language.language }}</span>
+                        <span class="language-level">{{ language.fluency.value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Volunteer -->
+                {% if volunteer %}
+                <div class="section">
+                    <h2 class="section-title">Volunteer</h2>
+                    {% for vol in volunteer %}
+                    <div class="volunteer-item">
+                        <div class="volunteer-title">{{ vol.position }}</div>
+                        <div class="volunteer-org">{{ vol.organization }}</div>
+                        <div class="education-details">
+                            <span><i class="fas fa-calendar"></i> {{ vol.start_date }} - {{ vol.end_date }}</span>
+                        </div>
+                        {% if vol.summary %}
+                        <div class="job-description">{{ vol.summary }}</div>
+                        {% endif %}
+                        {% if vol.highlights %}
+                        <ul class="job-highlights">
+                            {% for highlight in vol.highlights %}
+                            <li>{{ highlight }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Awards -->
+                {% if awards %}
+                <div class="section">
+                    <h2 class="section-title">Awards</h2>
+                    {% for award in awards %}
+                    <div class="award-item">
+                        <div class="award-title">{{ award.title }}</div>
+                        <div class="award-details">{{ award.awarder }} • {{ award.date }}</div>
+                        {% if award.summary %}
+                        <div class="job-description" style="margin-top: 8px;">{{ award.summary }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Experience -->
+                {% if work %}
+                <div class="section">
+                    <h2 class="section-title">Experience</h2>
+                    {% for job in work %}
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">{{ job.position }}</div>
+                            <div class="company-name">{{ job.name }}</div>
+                        </div>
+                        <div class="job-details">
+                            <span><i class="fas fa-calendar"></i> {{ job.start_date }} - {{ job.end_date | upper }}</span>
+                            {% if job.url %}
+                            <span><i class="fas fa-link"></i> {{ job.url }}</span>
+                            {% endif %}
+                        </div>
+                        {% if job.summary %}
+                        <div class="job-description">{{ job.summary }}</div>
+                        {% endif %}
+                        {% if job.highlights %}
+                        <ul class="job-highlights">
+                            {% for highlight in job.highlights %}
+                            <li>{{ highlight }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Projects -->
+                {% if projects %}
+                <div class="section">
+                    <h2 class="section-title">Projects</h2>
+                    {% for project in projects %}
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">{{ project.name }}</div>
+                        </div>
+                        <div class="job-details">
+                            <span><i class="fas fa-calendar"></i> {{ project.start_date }} - {{ project.end_date }}</span>
+                            {% if project.url %}
+                            <span><i class="fas fa-link"></i> {{ project.url }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="job-description">{{ project.description }}</div>
+                        {% if project.highlights %}
+                        <ul class="job-highlights">
+                            {% for highlight in project.highlights %}
+                            <li>{{ highlight }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Strengths -->
+                {% if interests %}
+                <div class="section">
+                    <h2 class="section-title">Strengths</h2>
+                    {% for interest in interests %}
+                    <div class="strength-item">
+                        <div class="strength-header">
+                            <div class="strength-icon">
+                                {% if interest.name.lower() in ['curiosity', 'learning'] %}
+                                <i class="fas fa-search"></i>
+                                {% elif interest.name.lower() in ['critical thinking', 'analysis'] %}
+                                <i class="fas fa-brain"></i>
+                                {% elif interest.name.lower() in ['leadership', 'management'] %}
+                                <i class="fas fa-users"></i>
+                                {% elif interest.name.lower() in ['creativity', 'innovation'] %}
+                                <i class="fas fa-lightbulb"></i>
+                                {% elif interest.name.lower() in ['communication', 'presentation'] %}
+                                <i class="fas fa-comments"></i>
+                                {% else %}
+                                <i class="fas fa-star"></i>
+                                {% endif %}
+                            </div>
+                            <div class="strength-title">{{ interest.name }}</div>
+                        </div>
+                        {% if interest.keywords %}
+                        <div class="strength-description">{{ interest.keywords | join(', ') }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- References -->
+                {% if references %}
+                <div class="section">
+                    <h2 class="section-title">References</h2>
+                    {% for ref in references %}
+                    <div class="reference-item">
+                        <div class="reference-name">{{ ref.name }}</div>
+                        {% if ref.email or ref.phone %}
+                        <div class="reference-contact">
+                            {% if ref.email %}{{ ref.email }}{% endif %}
+                            {% if ref.email and ref.phone %} • {% endif %}
+                            {% if ref.phone %}{{ ref.phone }}{% endif %}
+                        </div>
+                        {% endif %}
+                        {% if ref.reference %}
+                        <div class="reference-text">{{ ref.reference }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Certificates -->
+                {% if certificates %}
+                <div class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    {% for cert in certificates %}
+                    <div class="award-item">
+                        <div class="award-title">{{ cert.name }}</div>
+                        <div class="award-details">{{ cert.issuer }} • {{ cert.date }}</div>
+                        {% if cert.url %}
+                        <div class="job-details" style="margin-top: 5px;">
+                            <span><i class="fas fa-link"></i> <a href="{{ cert.url }}" target="_blank">View Certificate</a></span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-left">
+                {% if basics.url %}
+                <a href="{{ basics.url }}" target="_blank">{{ basics.url }}</a>
+                {% else %}
+                {{ basics.email }}
+                {% endif %}
+            </div>
+            <div class="footer-right">
+                <span>Powered by</span>
+                <strong>Resume Builder</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

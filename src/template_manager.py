@@ -1,11 +1,19 @@
+import logging
 import json
 from pathlib import Path
 from typing import Dict, List, Any
 from jinja2 import Environment, FileSystemLoader
 
+from src.logging_config import setup_logger
+
+logger: logging.Logger = setup_logger(
+    name="cv_creator",
+    level=logging.INFO,
+    format_string='%(levelname)s - %(asctime)s - %(name)s - %(message)s',
+    include_file_handler=False,
+)
 
 class TemplateManager:
-    """Manages CV templates and their metadata"""
 
     def __init__(self, templates_dir: str = "app/cv-templates"):
         self.templates_dir = Path(templates_dir)
@@ -15,7 +23,6 @@ class TemplateManager:
         """Get list of available templates with their metadata"""
         templates = []
 
-        # Check if templates directory exists
         if not self.templates_dir.exists():
             return []
 
@@ -30,36 +37,31 @@ class TemplateManager:
     def _load_template_metadata(self, template_dir: Path) -> Dict[str, Any]:
         """Load template metadata from template.json"""
         try:
-            metadata_file = template_dir / "template.json"
+            metadata_file: Path = template_dir / "template.json"
             with open(metadata_file, 'r', encoding='utf-8') as f:
                 metadata = json.load(f)
 
-            # Add computed fields
             metadata['id'] = template_dir.name
             metadata['preview_image'] = f"static/img/templates/{template_dir.name}-preview.png"
 
             return metadata
         except Exception as e:
-            print(f"Error loading template metadata for {template_dir.name}: {e}")
+            logger.error(f"Error loading template metadata for {template_dir.name}: {e}")
             return None
 
     def get_template_path(self, template_id: str) -> Path:
-        """Get the path to a specific template"""
         return self.templates_dir / template_id
 
     def get_template_static_path(self, template_id: str) -> Path:
-        """Get the static assets path for a template"""
         return self.templates_dir / template_id / "static"
 
     def template_exists(self, template_id: str) -> bool:
-        """Check if a template exists"""
         template_path = self.get_template_path(template_id)
         return template_path.exists() and (template_path / "template.json").exists()
 
     def get_template_environment(self, template_id: str) -> Environment:
-        """Get Jinja2 environment for a specific template"""
         if not self.template_exists(template_id):
             raise ValueError(f"Template '{template_id}' not found")
 
-        template_path = self.get_template_path(template_id)
+        template_path: Path = self.get_template_path(template_id)
         return Environment(loader=FileSystemLoader(str(template_path)))
