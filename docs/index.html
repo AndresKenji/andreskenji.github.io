@@ -2,216 +2,940 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Oscar A. Rodriguez - Resume</title>
-    <link rel="stylesheet" href="static/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar A. Rodriguez - Telecomunications Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 8px solid rgba(255,255,255,0.2);
+            margin: 0 auto 20px;
+            background: #ccc;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZGRkIi8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjOTk5Ii8+CjxwYXRoIGQ9Im00NS41IDEyNWMwLTI1IDEzLjUtNDUgMjkuNS00NXMyOS41IDIwIDI5LjUgNDUiIGZpbGw9IiM5OTkiLz4KPC9zdmc+');
+            /* Mejor imagen por defecto más limpia */
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Contact Bar */
+        .contact-bar {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 15px;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
+        .contact-item i {
+            margin-right: 8px;
+            width: 16px;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            min-height: 700px;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        /* Right Content */
+        .content {
+            flex: 2;
+            padding: 40px 35px;
+            background: white;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+            color: #667eea;
+            width: 20px;
+        }
+
+        /* About Me */
+        .about-text {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #495057;
+            text-align: justify;
+        }
+
+        /* Skills */
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+
+        .skill-percentage {
+            font-size: 0.8em;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+
+        /* Awards */
+        .award-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .award-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .award-org {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+
+        /* Work Experience & Education */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 25px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #e9ecef;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        .timeline-subtitle {
+            font-style: italic;
+            color: #667eea;
+            margin-top: 2px;
+        }
+
+        .timeline-date {
+            background: #2c3e50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .timeline-description {
+            font-size: 0.9em;
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .timeline-highlights {
+            list-style: none;
+        }
+
+        .timeline-highlights li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.85em;
+            color: #495057;
+        }
+
+        .timeline-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .language-level {
+            font-size: 0.85em;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* Hobbies & Interests */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .hobby-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .hobby-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .hobby-icon {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .hobby-name {
+            font-size: 0.8em;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-item {
+                margin: 8px 0;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-date {
+                margin-top: 5px;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media print {
+            /* Configuración de página para impresión */
+            @page {
+                size: A4;
+                margin: 0.5in;
+            }
+
+            /* Forzar colores y fondos en impresión */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0 !important;
+                font-size: 11pt !important;
+                line-height: 1.4 !important;
+            }
+
+            .resume-container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+                margin: 0 !important;
+                background: white !important;
+            }
+
+            /* Header con gradiente visible en impresión */
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+                padding: 30px 20px !important;
+                page-break-inside: avoid !important;
+            }
+
+            /* Foto de perfil optimizada para impresión */
+            .profile-photo {
+                width: 120px !important;
+                height: 120px !important;
+                border: 6px solid rgba(255,255,255,0.3) !important;
+                margin: 0 auto 15px !important;
+                background-size: cover !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            /* Títulos y texto */
+            h1 {
+                font-size: 24pt !important;
+                margin: 10px 0 5px 0 !important;
+            }
+
+            .subtitle {
+                font-size: 14pt !important;
+                margin-bottom: 15px !important;
+            }
+
+            /* Contact bar */
+            .contact-bar {
+                background: #f8f9fa !important;
+                padding: 15px 20px !important;
+                border-bottom: 2px solid #e9ecef !important;
+                page-break-inside: avoid !important;
+            }
+
+            .contact-item {
+                font-size: 10pt !important;
+                margin-right: 20px !important;
+            }
+
+            /* Main content */
+            .main-content {
+                padding: 20px !important;
+                display: flex !important;
+                gap: 20px !important;
+            }
+
+            .sidebar {
+                width: 35% !important;
+                padding-right: 15px !important;
+            }
+
+            .content {
+                width: 65% !important;
+            }
+
+            /* Secciones */
+            .section {
+                margin-bottom: 15px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .section-title {
+                font-size: 12pt !important;
+                color: #667eea !important;
+                border-bottom: 1px solid #e9ecef !important;
+                padding-bottom: 5px !important;
+                margin-bottom: 10px !important;
+                page-break-after: avoid !important;
+            }
+
+            /* Skills con barras visibles */
+            .skill-item {
+                margin-bottom: 8px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .skill-header {
+                font-size: 10pt !important;
+                margin-bottom: 3px !important;
+            }
+
+            .skill-bar {
+                height: 8px !important;
+                background: #e9ecef !important;
+                border-radius: 4px !important;
+                overflow: hidden !important;
+            }
+
+            .skill-progress {
+                height: 100% !important;
+                background: #667eea !important;
+                border-radius: 4px !important;
+                animation: none !important;
+            }
+
+            /* Timeline items */
+            .timeline-item {
+                margin-bottom: 12px !important;
+                page-break-inside: avoid !important;
+                border-left: 2px solid #667eea !important;
+                padding-left: 15px !important;
+                margin-left: 10px !important;
+            }
+
+            .timeline-header {
+                margin-bottom: 5px !important;
+            }
+
+            .timeline-title {
+                font-size: 11pt !important;
+                font-weight: bold !important;
+                color: #333 !important;
+            }
+
+            .timeline-subtitle {
+                font-size: 10pt !important;
+                color: #666 !important;
+            }
+
+            .timeline-date {
+                font-size: 9pt !important;
+                color: #999 !important;
+            }
+
+            .timeline-description {
+                font-size: 9pt !important;
+                line-height: 1.3 !important;
+                margin-top: 5px !important;
+            }
+
+            /* Languages */
+            .language-item {
+                margin-bottom: 5px !important;
+                font-size: 10pt !important;
+            }
+
+            .language-level {
+                color: #667eea !important;
+                font-weight: bold !important;
+            }
+
+            /* Awards */
+            .award-item {
+                margin-bottom: 8px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .award-title {
+                font-weight: bold !important;
+                font-size: 10pt !important;
+            }
+
+            .award-org {
+                font-size: 9pt !important;
+                color: #666 !important;
+            }
+
+            /* Hobbies grid */
+            .hobbies-grid {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+            }
+
+            .hobby-item {
+                font-size: 9pt !important;
+                color: #667eea !important;
+            }
+
+            /* Evitar saltos de página en elementos críticos */
+            .header,
+            .contact-bar,
+            .section-title {
+                page-break-inside: avoid !important;
+            }
+
+            /* Ocultar elementos no necesarios en impresión */
+            .no-print {
+                display: none !important;
+            }
+
+            /* Asegurar que los iconos se muestren */
+            .fas,
+            .fa {
+                color: inherit !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+        }
+
+        /* Animation for skill bars */
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        .skill-progress {
+            animation: fillBar 1.5s ease-out;
+        }
+    </style>
 </head>
 <body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            
+            <div class="profile-photo" style="background-image: url('static/img/kenji.jpg'), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZGRkIi8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjOTk5Ii8+CjxwYXRoIGQ9Im00NS41IDEyNWMwLTI1IDEzLjUtNDUgMjkuNS00NXMyOS41IDIwIDI5LjUgNDUiIGZpbGw9IiM5OTkiLz4KPC9zdmc+');"></div>
+            
+            <h1>Oscar A. Rodriguez</h1>
+            <div class="subtitle">Telecomunications Engineer</div>
+        </div>
 
-  <div class="page-container">
+        <!-- Contact Bar -->
+        <div class="contact-bar">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                (+57) 301 6679447
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                Engativa, Bogotá
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-globe"></i>
+                https://linkedin.com/in/oarf
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                andres.kenji@outlook.com
+            </div>
+        </div>
 
-    <div class="page-wrapper">
-      <div class="sidebar">
-    <img src="static/img/kenji.jpg" alt="Profile Picture">
-    <h3>ABOUT ME</h3>
-    <p>I’m a Telecommunications Engineer currently working as a Cloud Automation Engineer with a strong focus on DevOps practices. I began my career managing virtualization platforms (VMware, Hyper-V), transitioned into cloud administration with Azure and AWS, and eventually specialized in automation — where I discovered my true passion: coding and optimizing infrastructure.
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- About Me -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        About Me
+                    </h2>
+                    <div class="about-text">I’m a Telecommunications Engineer currently working as a Cloud Automation Engineer with a strong focus on DevOps practices. I began my career managing virtualization platforms (VMware, Hyper-V), transitioned into cloud administration with Azure and AWS, and eventually specialized in automation — where I discovered my true passion: coding and optimizing infrastructure.
 I have hands-on experience with Go, Python, PowerShell, and Terraform, and I use these tools to automate cloud deployments, CI/CD pipelines, and infrastructure management. I'm passionate about building reliable, scalable systems and continuously improving developer workflows.
-I enjoy working in collaborative environments and learning from other engineers. Currently, I'm also expanding my skills in web development and data science to bring a broader perspective to problem-solving in DevOps.</p>
+I enjoy working in collaborative environments and learning from other engineers. Currently, I'm also expanding my skills in web development and data science to bring a broader perspective to problem-solving in DevOps.</div>
+                </div>
+                
 
-    <div class="contact">
-    <h3>CONTACT</h3>
-    
-    <div class="contact-item">
-        <a href="https://linkedin.com/in/oarf" class="contact-link" target="_blank" rel="noopener">
-            <!-- SVG de LinkedIn -->
-            <svg class="contact-icon" height="20px" width="20px" viewBox="0 0 382 382" fill="#0077B7" xmlns="http://www.w3.org/2000/svg">
-                <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
-                         C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z
-                         M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345
-                         c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
-                         c5.554,0,10.056,4.502,10.056,10.056V329.844z
-                         M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666
-                         S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666
-                         S109.208,123.432,86.748,123.432z
-                         M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
-                         c-5.106,0-9.246-4.14-9.246-9.246v-84.168
-                         c0-12.556,3.683-55.021-32.813-55.021
-                         c-28.309,0-34.051,29.066-35.204,42.11v97.079
-                         c0,5.106-4.139,9.246-9.246,9.246h-44.426
-                         c-5.106,0-9.246-4.14-9.246-9.246V149.593
-                         c0-5.106,4.14-9.246,9.246-9.246h44.426
-                         c5.106,0,9.246,4.14,9.246,9.246v15.655
-                         c10.497-15.753,26.097-27.912,59.312-27.912
-                         c73.552,0,73.131,68.716,73.131,106.472
-                         L341.91,330.654L341.91,330.654z" />
-            </svg>
-            <span class="contact-text">https://linkedin.com/in/oarf</span>
-        </a>
-    </div>
+                <!-- Skills -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Skills
+                    </h2>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Programming</span>
+                            <span class="skill-percentage">100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%; background-color: #0070c0;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">DevOps</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%; background-color: #0070c0;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Cloud Computing</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%; background-color: #0070c0;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
 
-    
-    <div class="contact-item">
-        <a href="mailto:andres.kenji@outlook.com" class="contact-link">
-            <!-- SVG de correo -->
-            <svg class="contact-icon" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 8L8.4499 11.6333C9.7329 12.4886 10.3745 12.9163 11.0678 13.0825C11.6806 13.2293 12.3194 13.2293 12.9322 13.0825C13.6255 12.9163 14.2671 12.4886 15.5501 11.6333L21 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="contact-text">andres.kenji@outlook.com</span>
-        </a>
-    </div>
-</div>
+                <!-- Languages -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-language"></i>
+                        Languages
+                    </h2>
+                    
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <span class="language-level">Advanced</span>
+                    </div>
+                    
+                    <div class="language-item">
+                        <span class="language-name">Spanish</span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    
+                </div>
+                
 
+                <!-- Awards -->
+                
 
-    <div class="interest">
-        <h3>INTEREST</h3>
-        <ul>
-            
-                <li>Technology</li>
-            
-                <li>Programming</li>
-            
-                <li>Sci-Fi Movies/books</li>
-            
-        </ul>
-    </div>
+                <!-- Interests/Hobbies -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-star"></i>
+                        Hobbies & Interests
+                    </h2>
+                    <div class="hobbies-grid">
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                
+                                <i class="fas fa-heart"></i>
+                                
+                            </div>
+                            <div class="hobby-name">Technology</div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                
+                                <i class="fas fa-heart"></i>
+                                
+                            </div>
+                            <div class="hobby-name">Programming</div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                
+                                <i class="fas fa-heart"></i>
+                                
+                            </div>
+                            <div class="hobby-name">Sci-Fi Movies/books</div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
 
-    <div class="languages">
-        <h3>LANGUAGES</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Language</th>
-                    <th>Fluency</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                <tr>
-                    <td>English</td>
-                    <td>Advanced</td>
-                </tr>
-            
-                <tr>
-                    <td>Spanish</td>
-                    <td>Native</td>
-                </tr>
-            
-            </tbody>
-        </table>
-    </div>
-</div>
-      <div class="main">
-    <h1>Oscar A. Rodriguez</h1>
-    <h2>Telecomunications Engineer</h2>
+            <!-- Main Content -->
+            <div class="content">
+                <!-- Education -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        Education
+                    </h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Bachelor of Telecomunications Engineer</div>
+                                <div class="timeline-subtitle">Universidad Compensar</div>
+                            </div>
+                            <div class="timeline-date">2015-02-01 - 2021-12-01</div>
+                        </div>
+                        
+                        <div class="timeline-description">
+                            GPA: 4.0
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Associate of Telecommunications Network Management</div>
+                                <div class="timeline-subtitle">Universidad Compensar</div>
+                            </div>
+                            <div class="timeline-date">2018-01-01 - 2020-12-01</div>
+                        </div>
+                        
+                        <div class="timeline-description">
+                            GPA: 4.0
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
 
-    <div class="section">
-        <h3>EDUCATION</h3>
-        
-        <div>
-            <a href="https://ucompensar.edu.co/" class="contact-link" target="_blank"><strong>Universidad Compensar</strong></a> (2015-02-01 -> 2021-12-01)<br>
-            Bachelor's Telecomunications Engineer
-        </div>
-        <br>
-        
-        <div>
-            <a href="https://ucompensar.edu.co/" class="contact-link" target="_blank"><strong>Universidad Compensar</strong></a> (2018-01-01 -> 2020-12-01)<br>
-            Associate's Telecommunications Network Management
-        </div>
-        <br>
-        
-    </div>
-
-    <div class="section">
-        <h3>WORK EXPERIENCE</h3>
-        
-        <div class="experience">
-            <a href="https://www.michaelpage.com/" class="contact-link" target="_blank"><strong>Michael Page</strong> - Cloud Automation Engineer</a>
-            2025-03-18 -> Current<br>
-            <p>Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.
+                <!-- Work Experience -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        Experience
+                    </h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Cloud Automation Engineer</div>
+                                <div class="timeline-subtitle">Michael Page</div>
+                            </div>
+                            <div class="timeline-date">2025-03-18 - CURRENT</div>
+                        </div>
+                        
+                        <div class="timeline-description">Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.
 Incident and problem management, change control execution, and capacity planning.
 Monitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.
-Cloud automation using tools such as Python, Go, Terraform, and Azure DevOps.</p>
-        </div>
-        
-        <div class="experience">
-            <a href="https://ifxnetworks.com/en/" class="contact-link" target="_blank"><strong>IFX Networks</strong> - Cloud Data and Automation Engineer</a>
-            2022-01-18 -> 2025-03-18<br>
-            <p>Design and implement data pipelines to acquire and transform information, enabling decision-making support.
+Cloud automation using tools such as Python, Go, Terraform, and Azure DevOps.</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Cloud Data and Automation Engineer</div>
+                                <div class="timeline-subtitle">IFX Networks</div>
+                            </div>
+                            <div class="timeline-date">2022-01-18 - 2025-03-18</div>
+                        </div>
+                        
+                        <div class="timeline-description">Design and implement data pipelines to acquire and transform information, enabling decision-making support.
 Apply data analysis techniques to identify patterns and trends, and communicate findings through effective visualizations.
 Develop automated algorithms and procedures to integrate data from multiple sources and optimize critical business processes.
-Identify opportunities to collect new data and improve data quality and reliability.</p>
-        </div>
-        
-        <div class="experience">
-            <a href="https://www.avalvc.com.co/inicio" class="contact-link" target="_blank"><strong>A Toda Hora S.A.</strong> - Platform Administrator</a>
-            2022-01-18 -> 2025-03-18<br>
-            <p>Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.
+Identify opportunities to collect new data and improve data quality and reliability.</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Platform Administrator</div>
+                                <div class="timeline-subtitle">A Toda Hora S.A.</div>
+                            </div>
+                            <div class="timeline-date">2022-01-18 - 2025-03-18</div>
+                        </div>
+                        
+                        <div class="timeline-description">Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.
 Automated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.
-Deployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.</p>
+Deployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.</div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                
+
+                <!-- Projects -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i>
+                        Projects
+                    </h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Project</div>
+                            </div>
+                            <div class="timeline-date">2019-01-01 - 2021-01-01</div>
+                        </div>
+                        <div class="timeline-description">Description...</div>
+                        
+                        <ul class="timeline-highlights">
+                            
+                            <li>Won award at AIHacks 2016</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+                
+
+                <!-- Certificates -->
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-certificate"></i>
+                        Certifications
+                    </h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Certificate</div>
+                                <div class="timeline-subtitle">Company</div>
+                            </div>
+                            <div class="timeline-date">2021-11-07</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
         </div>
-        
     </div>
 
-    <div class="section">
-        <h3>APTITUDES</h3>
-        
-            <div class="skill-row">
-            <span class="skill-name">Programming</span>
-            <progress class="skill-bar" max="100" value="100"></progress>
-            <span class="skill-value">100%</span>
-            </div>
-            <div class="skill-keywords">
-            
-                <span class="skill-tag">Python</span>
-            
-                <span class="skill-tag">Golang</span>
-            
-                <span class="skill-tag">javascript</span>
-            
-                <span class="skill-tag">Microservices</span>
-            
-                <span class="skill-tag">Restful APIs</span>
-            
-            </div>
-        
-            <div class="skill-row">
-            <span class="skill-name">DevOps</span>
-            <progress class="skill-bar" max="100" value="75"></progress>
-            <span class="skill-value">75%</span>
-            </div>
-            <div class="skill-keywords">
-            
-                <span class="skill-tag">CI/CD</span>
-            
-                <span class="skill-tag">GitHub Actions</span>
-            
-                <span class="skill-tag">Terraform</span>
-            
-                <span class="skill-tag">Docker</span>
-            
-                <span class="skill-tag">Kubernetes</span>
-            
-                <span class="skill-tag">Azure DevOps</span>
-            
-            </div>
-        
-            <div class="skill-row">
-            <span class="skill-name">Cloud Computing</span>
-            <progress class="skill-bar" max="100" value="75"></progress>
-            <span class="skill-value">75%</span>
-            </div>
-            <div class="skill-keywords">
-            
-                <span class="skill-tag">Azure</span>
-            
-                <span class="skill-tag">AWS</span>
-            
-            </div>
-        
-    </div>
-</div>
-
-    </div>
-
-  </div>
+    <script>
+        // Animate skill bars on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+    </script>
 </body>
 </html>
