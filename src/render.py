@@ -15,9 +15,14 @@ logger: logging.Logger = setup_logger(
     include_file_handler=False,
 )
 
-def render_resume(resume: Resume, output_path="docs/index.html") -> None:
+def render_resume(
+    resume: Resume,
+    output_path="docs/index.html",
+    template_name: str = "classic",
+    ) -> None:
+
     env: Environment = Environment(loader=FileSystemLoader("src/templates"))
-    template: Template = env.get_template("layout.html")
+    template: Template = env.get_template(template_name + ".html")
     rendered_html: str = template.render(resume=resume)
 
     Path(output_path).write_text(rendered_html, encoding='utf-8')
