@@ -8,7 +8,7 @@ from src.logging_config import setup_logger
 from src.models import Resume
 from src.render import render_resume
 
-parser = argparse.ArgumentParser(
+parser: argparse.ArgumentParser = argparse.ArgumentParser(
     description="CV Generator, a tool to create and render your CV from a JSON resume file.",
     )
 
@@ -22,7 +22,7 @@ parser.add_argument(
 parser.add_argument(
     '--template',
     type=str,
-    default='src/templates/classic.html',
+    default='classic',
     help='Path to the HTML template file. Default is "src/templates/clasic.html"'
 )
 
