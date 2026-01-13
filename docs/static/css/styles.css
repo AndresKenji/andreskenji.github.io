@@ -40,6 +40,39 @@ body {
   width: 100%;
   max-width: 21cm;      /* Nunca sobrepasa 21 cm de ancho */
   margin: 5px 0;       /* Márgenes arriba/abajo en pantallas grandes */
+  position: relative;
+}
+
+/*—————————————————————————
+  Language Switcher
+—————————————————————————*/
+
+.lang-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.lang-switcher a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #0070c0;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.lang-switcher a:hover {
+  background-color: #005a9e;
+}
+
+@media print {
+  .lang-switcher {
+    display: none;
+  }
 }
 
 /*—————————————————————————

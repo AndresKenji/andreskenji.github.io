@@ -1,10 +1,10 @@
 <div class="sidebar">
-    <img src="{{resume.basics.image}}" alt="Profile Picture">
-    <h3>ABOUT ME</h3>
+    <img src="{{ static_prefix }}{{resume.basics.image}}" alt="Profile Picture">
+    <h3>{{ t.about_me }}</h3>
     <p>{{ resume.basics.summary }}</p>
 
     <div class="contact">
-    <h3>CONTACT</h3>
+    <h3>{{ t.contact }}</h3>
     {# Linkedin #}
     <div class="contact-item">
         <a href="{{ resume.basics.url }}" class="contact-link" target="_blank" rel="noopener">
@@ -48,7 +48,7 @@
 
 
     <div class="interest">
-        <h3>INTEREST</h3>
+        <h3>{{ t.interest }}</h3>
         <ul>
             {% for interest in resume.interests %}
                 <li>{{ interest.name }}</li>
@@ -57,12 +57,12 @@
     </div>
 
     <div class="languages">
-        <h3>LANGUAGES</h3>
+        <h3>{{ t.languages }}</h3>
         <table>
             <thead>
                 <tr>
-                    <th>Language</th>
-                    <th>Fluency</th>
+                    <th>{{ t.language }}</th>
+                    <th>{{ t.fluency }}</th>
                 </tr>
             </thead>
             <tbody>

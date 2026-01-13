@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ t.lang_code }}">
 <head>
     <meta charset="UTF-8">
-    <title>{{ resume.basics.name }} - Resume</title>
-    <link rel="stylesheet" href="static/css/styles.css">
+    <title>{{ resume.basics.name }} - {{ t.page_title }}</title>
+    <link rel="stylesheet" href="{{ static_prefix }}static/css/styles.css">
 </head>
 <body>
 
   <div class="page-container">
+    <div class="lang-switcher">
+      <a href="{{ t.switch_lang_url }}">{{ t.switch_lang_label }}</a>
+    </div>
 
     <div class="page-wrapper">
       {% include 'sidebar.html' %}

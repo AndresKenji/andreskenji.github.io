@@ -3,7 +3,7 @@
     <h2>{{ resume.basics.label }}</h2>
 
     <div class="section">
-        <h3>EDUCATION</h3>
+        <h3>{{ t.education }}</h3>
         {% for edu in resume.education %}
         <div>
             <a href="{{edu.url}}" class="contact-link" target="_blank"><strong>{{ edu.institution }}</strong></a> ({{ edu.start_date }} -> {{ edu.end_date }})<br>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="section">
-        <h3>WORK EXPERIENCE</h3>
+        <h3>{{ t.work_experience }}</h3>
         {% for job in resume.work %}
         <div class="experience">
             <a href="{{job.url}}" class="contact-link" target="_blank"><strong>{{ job.name }}</strong> - {{ job.position }}</a>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="section">
-        <h3>APTITUDES</h3>
+        <h3>{{ t.aptitudes }}</h3>
         {% for skill in resume.skills %}
             <div class="skill-row">
             <span class="skill-name">{{ skill.name }}</span>
