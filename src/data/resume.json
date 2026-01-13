@@ -1,8 +1,8 @@
 {
   "basics": {
     "name": "Oscar A. Rodriguez",
-    "label": "Telecomunications Engineer",
-    "image": "static/img/kenji.jpg",
+    "label": "Telecommunications Engineer",
+    "image": "static/img/kenji.png",
     "email": "andres.kenji@outlook.com",
     "phone": "(+57) 301 6679447",
     "url": "https://linkedin.com/in/oarf",
@@ -26,14 +26,14 @@
     "url": "https://cloudnonic.com/",
     "start_date": "2025-09-08",
     "end_date": "Current",
-    "summary": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
+    "summary": "Development and maintenance of backend services and RESTful APIs using Python and NestJS, following clean architecture and SOLID principles.\nDesign and implementation of cloud infrastructure on AWS, including EC2, Lambda, S3, RDS, and API Gateway.\nBuilding and optimizing CI/CD pipelines with GitHub Actions and Azure DevOps for automated testing and deployments.\nInfrastructure as Code (IaC) management with Terraform for scalable and reproducible cloud environments.\nCollaboration with cross-functional teams to deliver features, troubleshoot production issues, and improve system reliability.",
     "highlights":[]
   },{
     "name": "Michael Page",
     "position": "Cloud Automation Engineer",
     "url": "https://www.michaelpage.com/",
     "start_date": "2025-03-18",
-    "end_date": "Current",
+    "end_date": "2025-09-08",
     "summary": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
     "highlights":[]
   },{
@@ -56,7 +56,7 @@
   "education": [{
     "institution": "Universidad Compensar",
     "url": "https://ucompensar.edu.co/",
-    "area": "Telecomunications Engineer",
+    "area": "Telecommunications Engineering",
     "study_type": "Bachelor",
     "start_date": "2015-02-01",
     "end_date": "2021-12-01",
@@ -74,17 +74,12 @@
   }],
   "volunteer":[],
   "awards": [],
-  "certificates": [{
-    "name": "Certificate",
-    "date": "2021-11-07",
-    "issuer": "Company",
-    "url": "https://certificate.com"
-  }],
+  "certificates": [],
   "publications": [],
   "skills": [{
     "name": "Programming",
     "level": "Master",
-    "keywords": ["Python","Golang","javascript","Microservices","Restful APIs"]
+    "keywords": ["Python","NestJS","Golang","JavaScript","Microservices","RESTful APIs"]
   },{
     "name": "DevOps",
     "level": "Proficient",
@@ -109,22 +104,8 @@
     "keywords": ["Python","Golang"]
   },{
     "name": "Sci-Fi Movies/books",
-    "keywords": ["Stasr Wars","BTTF", "Lord of the Rings"]
+    "keywords": ["Star Wars","BTTF", "Lord of the Rings"]
   }],
-  "references": [{
-    "name": "Jane Doe",
-    "reference": "Reference…",
-    "email": "jane@example.com",
-    "phone": "(123) 456-7890"
-  }],
-  "projects": [{
-    "name": "Project",
-    "start_date": "2019-01-01",
-    "end_date": "2021-01-01",
-    "description": "Description...",
-    "highlights": [
-      "Won award at AIHacks 2016"
-    ],
-    "url": "https://project.com/"
-  }]
+  "references": [],
+  "projects": []
 }
