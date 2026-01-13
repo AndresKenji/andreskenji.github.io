@@ -21,6 +21,14 @@
     }]
   },
   "work": [{
+    "name": "Cloudnonic",
+    "position": "Cloud Automation Engineer",
+    "url": "https://cloudnonic.com/",
+    "start_date": "2025-09-08",
+    "end_date": "Current",
+    "summary": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
+    "highlights":[]
+  },{
     "name": "Michael Page",
     "position": "Cloud Automation Engineer",
     "url": "https://www.michaelpage.com/",
