@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor del CV</title>
+<link rel="stylesheet" href="/assets/editor.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Editor del CV</div>
+
+  <label class="control">
+    Tema
+    <select id="theme-select"></select>
+  </label>
+
+  <div class="control seg" id="lang-toggle" role="group" aria-label="Idioma del preview"></div>
+
+  <div class="spacer"></div>
+
+  <span id="status" class="status"></span>
+  <button id="save-btn" class="btn btn-primary" disabled>Guardar</button>
+</header>
+
+<main class="workspace">
+  <section class="pane pane-form">
+    <div id="example-notice" class="notice" hidden></div>
+    <div id="error-summary" class="error-summary" hidden></div>
+    <div id="form"></div>
+  </section>
+
+  <section class="pane pane-preview">
+    <iframe id="preview" title="Vista previa del CV"></iframe>
+  </section>
+</main>
+
+<script src="/assets/editor.js"></script>
+</body>
+</html>

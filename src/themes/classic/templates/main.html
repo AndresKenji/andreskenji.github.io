@@ -1,0 +1,128 @@
+{% from 'macros.html' import date_range, highlights, tags %}
+<div class="main">
+    <h1>{{ resume.basics.name }}</h1>
+    <h2>{{ resume.basics.label | loc }}</h2>
+
+    {% if resume.education %}
+    <div class="section">
+        <h3>{{ t.education }}</h3>
+        {% for edu in resume.education %}
+        <div class="entry">
+            <a href="{{ edu.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ edu.institution }}</strong></a>
+            ({{ date_range(edu.start_date, edu.end_date, t) }})<br>
+            {{ edu.study_type.value }}'s {{ edu.area | loc }}
+            {% if edu.score %}<span class="meta">&middot; {{ t.score }} {{ edu.score }}</span>{% endif %}
+            {% if edu.courses %}<div class="meta">{{ t.courses }}: {{ tags(edu.courses) }}</div>{% endif %}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.work %}
+    <div class="section">
+        <h3>{{ t.work_experience }}</h3>
+        {% for job in resume.work %}
+        <div class="experience">
+            <a href="{{ job.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ job.name }}</strong> - {{ job.position | loc }}</a>
+            {{ date_range(job.start_date, job.end_date, t) }}<br>
+            <p>{{ job.summary | loc }}</p>
+            {{ highlights(job.highlights) }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.projects %}
+    <div class="section">
+        <h3>{{ t.projects }}</h3>
+        {% for project in resume.projects %}
+        <div class="experience">
+            <a href="{{ project.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ project.name }}</strong></a>
+            {{ date_range(project.start_date, project.end_date, t) }}<br>
+            <p>{{ project.description | loc }}</p>
+            {{ highlights(project.highlights) }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.volunteer %}
+    <div class="section">
+        <h3>{{ t.volunteer }}</h3>
+        {% for vol in resume.volunteer %}
+        <div class="experience">
+            <a href="{{ vol.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ vol.organization }}</strong> - {{ vol.position | loc }}</a>
+            {{ date_range(vol.start_date, vol.end_date, t) }}<br>
+            <p>{{ vol.summary | loc }}</p>
+            {{ highlights(vol.highlights) }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.skills %}
+    <div class="section">
+        <h3>{{ t.aptitudes }}</h3>
+        {% for skill in resume.skills %}
+            <div class="skill-row">
+            <span class="skill-name">{{ skill.name | loc }}</span>
+            <progress class="skill-bar" max="100" value="{{ skill.level_percent }}"></progress>
+            <span class="skill-value">{{ skill.level_percent }}%</span>
+            </div>
+            <div class="skill-keywords">{{ tags(skill.keywords) }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.certificates %}
+    <div class="section">
+        <h3>{{ t.certificates }}</h3>
+        {% for cert in resume.certificates %}
+        <div class="entry">
+            <a href="{{ cert.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ cert.name | loc }}</strong></a>
+            <span class="meta">{{ t.issued_by }} {{ cert.issuer }} &middot; {{ cert.date }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.awards %}
+    <div class="section">
+        <h3>{{ t.awards }}</h3>
+        {% for award in resume.awards %}
+        <div class="entry">
+            <strong>{{ award.title | loc }}</strong>
+            <span class="meta">{{ t.awarded_by }} {{ award.awarder }} &middot; {{ award.date }}</span>
+            <p>{{ award.summary | loc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.publications %}
+    <div class="section">
+        <h3>{{ t.publications }}</h3>
+        {% for pub in resume.publications %}
+        <div class="entry">
+            <a href="{{ pub.url }}" class="contact-link" target="_blank" rel="noopener"><strong>{{ pub.name }}</strong></a>
+            <span class="meta">{{ t.published_by }} {{ pub.publisher }} &middot; {{ pub.release_date }}</span>
+            <p>{{ pub.summary | loc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.references %}
+    <div class="section">
+        <h3>{{ t.references }}</h3>
+        {% for ref in resume.references %}
+        <div class="entry">
+            <strong>{{ ref.name }}</strong>
+            {% if ref.email %}<span class="meta">&middot; {{ ref.email }}</span>{% endif %}
+            <p>{{ ref.reference | loc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

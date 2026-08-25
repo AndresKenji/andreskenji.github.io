@@ -1,0 +1,349 @@
+/*—————————————————————————
+  Tema "Modern" — una columna, sans-serif, timeline.
+  Pensado para leerse en pantalla y para imprimirse en A4.
+—————————————————————————*/
+
+:root {
+  --accent: #0070c0;
+  --ink: #1c2733;
+  --ink-soft: #5b6b7c;
+  --rule: #e3e8ee;
+  --paper: #ffffff;
+  --page-bg: #eef1f5;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 21cm;
+  margin: 5px 0;
+  position: relative;
+}
+
+.page-wrapper {
+  background: var(--paper);
+  width: 100%;
+  min-height: 29.7cm;
+  padding: 1.6cm 1.7cm;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/*—————————————————————————
+  Language switcher
+—————————————————————————*/
+
+.lang-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.lang-switcher a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lang-switcher a:hover {
+  filter: brightness(0.9);
+}
+
+/*—————————————————————————
+  Encabezado
+—————————————————————————*/
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.identity h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+
+.identity h2 {
+  margin: 2px 0 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.contact-inline {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.contact-inline a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.contact-inline a:hover {
+  color: var(--accent);
+}
+
+/*—————————————————————————
+  Secciones
+—————————————————————————*/
+
+.section {
+  margin-top: 26px;
+  break-inside: avoid;
+}
+
+.section h3 {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.section p {
+  margin: 6px 0 0 0;
+  white-space: pre-line;   /* respeta los saltos de línea del JSON */
+}
+
+.summary p {
+  color: var(--ink-soft);
+}
+
+h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+h4 a, .org a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h4 a:hover, .org a:hover {
+  color: var(--accent);
+}
+
+.org {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.meta {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+/*—————————————————————————
+  Timeline
+—————————————————————————*/
+
+.timeline-item {
+  display: flex;
+  gap: 18px;
+  padding-bottom: 16px;
+  break-inside: avoid;
+}
+
+.timeline-dates {
+  flex: 0 0 175px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-top: 3px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-body {
+  flex: 1;
+  border-left: 2px solid var(--rule);
+  padding-left: 16px;
+  position: relative;
+}
+
+.timeline-body::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.highlights {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/*—————————————————————————
+  Skills
+—————————————————————————*/
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+}
+
+.skill-card {
+  break-inside: avoid;
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.skill-name {
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.skill-value {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.skill-track {
+  height: 6px;
+  background: var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+}
+
+/*—————————————————————————
+  Tags
+—————————————————————————*/
+
+.tag-row {
+  margin-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  background: var(--rule);
+  color: var(--ink-soft);
+  border-radius: 3px;
+  padding: 2px 7px;
+  font-size: 11px;
+}
+
+/*—————————————————————————
+  Listas y dos columnas
+—————————————————————————*/
+
+.plain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.plain li {
+  margin-bottom: 9px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 30px;
+}
+
+.entry {
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+
+/*—————————————————————————
+  Impresión
+—————————————————————————*/
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .page-container {
+    margin: 0;
+    max-width: none;
+  }
+  .page-wrapper {
+    box-shadow: none;
+    min-height: auto;
+  }
+  .lang-switcher {
+    display: none;
+  }
+  a {
+    color: inherit;
+  }
+}
+
+/*—————————————————————————
+  Pantallas angostas
+—————————————————————————*/
+
+@media screen and (max-width: 640px) {
+  .page-wrapper { padding: 1cm; }
+  .header { flex-direction: column; text-align: center; }
+  .contact-inline { justify-content: center; }
+  .timeline-item { flex-direction: column; gap: 4px; }
+  .timeline-dates { flex: none; white-space: normal; }
+  .skills-grid, .two-col { grid-template-columns: 1fr; }
+}

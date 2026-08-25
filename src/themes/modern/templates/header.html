@@ -1,0 +1,21 @@
+{% from 'macros.html' import tags %}
+<header class="header">
+    <img class="avatar" src="{{ static_prefix }}{{ resume.basics.image }}" alt="{{ resume.basics.name }}">
+    <div class="identity">
+        <h1>{{ resume.basics.name }}</h1>
+        <h2>{{ resume.basics.label | loc }}</h2>
+        <ul class="contact-inline">
+            <li><a href="mailto:{{ resume.basics.email }}">{{ resume.basics.email }}</a></li>
+            {% if resume.basics.phone %}<li>{{ resume.basics.phone }}</li>{% endif %}
+            {% if resume.basics.url %}<li><a href="{{ resume.basics.url }}" target="_blank" rel="noopener">{{ resume.basics.url }}</a></li>{% endif %}
+            {% for profile in resume.basics.profiles %}
+            <li><a href="{{ profile.url }}" target="_blank" rel="noopener">{{ profile.network }}/{{ profile.username }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</header>
+
+<section class="section summary">
+    <h3>{{ t.about_me }}</h3>
+    <p>{{ resume.basics.summary | loc }}</p>
+</section>

@@ -1,0 +1,270 @@
+{
+  "basics": {
+    "name": "Jane Doe",
+    "label": {
+      "en": "Software Engineer",
+      "es": "Ingeniera de Software"
+    },
+    "image": "static/img/avatar.svg",
+    "email": "jane.doe@example.com",
+    "phone": "(+00) 000 0000000",
+    "url": "https://linkedin.com/in/janedoe",
+    "summary": {
+      "en": "Software engineer with a focus on backend systems and developer tooling.\nI like small, well-tested services and documentation that stays true.\nReplace this text with your own — everything on this page comes from src/data/resume.json.",
+      "es": "Ingeniera de software enfocada en sistemas backend y herramientas para desarrollo.\nMe gustan los servicios pequeños y bien probados, y la documentación que no miente.\nReemplaza este texto por el tuyo — todo lo de esta página sale de src/data/resume.json."
+    },
+    "location": {
+      "address": "221B Baker Street",
+      "postal_code": "NW1 6XE",
+      "city": "London",
+      "country_code": "GB",
+      "region": "London"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "janedoe",
+        "url": "https://github.com/janedoe"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Acme Corp",
+      "position": {
+        "en": "Senior Backend Engineer",
+        "es": "Ingeniera Backend Senior"
+      },
+      "url": "https://example.com",
+      "start_date": "2023-04-01",
+      "end_date": null,
+      "summary": {
+        "en": "Design and maintenance of the billing platform serving 40k requests per minute.\nMigration from a monolith to event-driven services without downtime.",
+        "es": "Diseño y mantenimiento de la plataforma de facturación que atiende 40k peticiones por minuto.\nMigración de un monolito a servicios orientados a eventos sin caídas de servicio."
+      },
+      "highlights": [
+        {
+          "en": "Cut p99 latency by 60%",
+          "es": "Reduje la latencia p99 en un 60%"
+        },
+        {
+          "en": "Introduced contract testing across 12 services",
+          "es": "Introduje pruebas de contrato en 12 servicios"
+        }
+      ]
+    },
+    {
+      "name": "Globex",
+      "position": {
+        "en": "Backend Engineer",
+        "es": "Ingeniera Backend"
+      },
+      "url": "https://example.org",
+      "start_date": "2020-08-01",
+      "end_date": "2023-03-31",
+      "summary": {
+        "en": "Built and operated internal APIs used by the mobile and web clients.\nOn-call rotation and incident response for the payments domain.",
+        "es": "Construcción y operación de APIs internas usadas por los clientes móvil y web.\nTurnos de guardia y respuesta a incidentes en el dominio de pagos."
+      },
+      "highlights": []
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Code Club",
+      "position": {
+        "en": "Mentor",
+        "es": "Mentora"
+      },
+      "url": "https://example.org/codeclub",
+      "start_date": "2022-01-01",
+      "end_date": null,
+      "summary": {
+        "en": "Weekly programming workshops for teenagers.",
+        "es": "Talleres semanales de programación para adolescentes."
+      },
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Somewhere",
+      "url": "https://example.edu",
+      "area": {
+        "en": "Computer Science",
+        "es": "Ciencias de la Computación"
+      },
+      "study_type": "Bachelor",
+      "start_date": "2016-02-01",
+      "end_date": "2020-06-01",
+      "score": "3.8",
+      "courses": [
+        {
+          "en": "Distributed Systems",
+          "es": "Sistemas Distribuidos"
+        },
+        {
+          "en": "Compilers",
+          "es": "Compiladores"
+        }
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": {
+        "en": "Engineering Excellence Award",
+        "es": "Premio a la Excelencia en Ingeniería"
+      },
+      "date": "2024-12-01",
+      "awarder": "Acme Corp",
+      "summary": {
+        "en": "For the billing platform migration.",
+        "es": "Por la migración de la plataforma de facturación."
+      }
+    }
+  ],
+  "certificates": [
+    {
+      "name": {
+        "en": "Certified Kubernetes Administrator",
+        "es": "Administradora Certificada de Kubernetes"
+      },
+      "date": "2024-05-01",
+      "issuer": "CNCF",
+      "url": "https://example.com/cert"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Event-driven billing at scale",
+      "publisher": "Example Journal",
+      "release_date": "2025-02-01",
+      "url": "https://example.com/paper",
+      "summary": {
+        "en": "A write-up of the migration and what we would do differently.",
+        "es": "Un recuento de la migración y qué haríamos distinto."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": {
+        "en": "Programming",
+        "es": "Programación"
+      },
+      "level": "Master",
+      "keywords": [
+        "Python",
+        "Go",
+        "TypeScript",
+        {
+          "en": "Testing",
+          "es": "Pruebas"
+        }
+      ],
+      "color": "#0070c0"
+    },
+    {
+      "name": {
+        "en": "Infrastructure",
+        "es": "Infraestructura"
+      },
+      "level": "Proficient",
+      "keywords": [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "PostgreSQL"
+      ],
+      "color": "#0070c0"
+    },
+    {
+      "name": {
+        "en": "Ways of working",
+        "es": "Formas de trabajo"
+      },
+      "level": "Competent",
+      "keywords": [
+        {
+          "en": "Code review",
+          "es": "Revisión de código"
+        },
+        {
+          "en": "Mentoring",
+          "es": "Mentoría"
+        }
+      ],
+      "color": "#0070c0"
+    }
+  ],
+  "languages": [
+    {
+      "language": {
+        "en": "English",
+        "es": "Inglés"
+      },
+      "fluency": "Native"
+    },
+    {
+      "language": {
+        "en": "Spanish",
+        "es": "Español"
+      },
+      "fluency": "Intermediate"
+    }
+  ],
+  "interests": [
+    {
+      "name": {
+        "en": "Open source",
+        "es": "Código abierto"
+      },
+      "keywords": [
+        "Python",
+        "CLI"
+      ]
+    },
+    {
+      "name": {
+        "en": "Photography",
+        "es": "Fotografía"
+      },
+      "keywords": [
+        {
+          "en": "Film",
+          "es": "Analógica"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "John Smith",
+      "reference": {
+        "en": "Jane is the engineer you want on an ambiguous problem.",
+        "es": "Jane es la ingeniera que quieres en un problema ambiguo."
+      },
+      "email": "john.smith@example.com",
+      "phone": null
+    }
+  ],
+  "projects": [
+    {
+      "name": "example-cli",
+      "start_date": "2024-01-01",
+      "end_date": null,
+      "description": {
+        "en": "A small command line tool for inspecting JSON logs.",
+        "es": "Una herramienta de línea de comandos para inspeccionar logs en JSON."
+      },
+      "highlights": [
+        {
+          "en": "400 stars on GitHub",
+          "es": "400 estrellas en GitHub"
+        }
+      ],
+      "url": "https://github.com/janedoe/example-cli"
+    }
+  ]
+}

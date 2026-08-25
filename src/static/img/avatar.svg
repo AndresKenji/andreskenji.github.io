@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Foto de perfil">
+  <defs>
+    <clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="200" height="200" fill="#dce3eb"/>
+    <circle cx="100" cy="82" r="34" fill="#a9b8c9"/>
+    <path d="M100 124c-33 0-60 22-60 49v27h120v-27c0-27-27-49-60-49z" fill="#a9b8c9"/>
+  </g>
+</svg>

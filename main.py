@@ -1,21 +1,19 @@
-import json
-from src.models import Resume
-from pathlib import Path
-from src.render import render_resume
+"""Genera el sitio estático del CV en docs/ a partir de src/data/resume.json."""
+from src.render import copy_static_assets, render_resume
+from src.storage import load_config, load_resume
 
 
-def load_resume(path: str) -> Resume:
-    data = json.loads(Path(path).read_text())
-    return Resume(**data)
+def build(output_dir: str = "docs") -> None:
+    config = load_config()
+    resume = load_resume()
+    theme = config["theme"]
+
+    for lang in config["languages"]:
+        output = render_resume(resume, lang=lang, theme=theme, output_dir=output_dir)
+        print(f"Generated: {output} ({lang.upper()}, theme={theme})")
+
+    copy_static_assets(theme=theme, output_dir=output_dir)
 
 
 if __name__ == "__main__":
-    # Generar versión en inglés
-    resume_en = load_resume("src/data/resume.json")
-    render_resume(resume_en, lang="en")
-    print("Generated: docs/index.html (EN)")
-
-    # Generar versión en español
-    resume_es = load_resume("src/data/resume_es.json")
-    render_resume(resume_es, lang="es")
-    print("Generated: docs/es/index.html (ES)")
+    build()

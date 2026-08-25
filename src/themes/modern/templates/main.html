@@ -1,0 +1,173 @@
+{% from 'macros.html' import date_range, highlights, tags %}
+<main class="main">
+
+    {% if resume.work %}
+    <section class="section">
+        <h3>{{ t.work_experience }}</h3>
+        <div class="timeline">
+        {% for job in resume.work %}
+            <article class="timeline-item">
+                <div class="timeline-dates">{{ date_range(job.start_date, job.end_date, t) }}</div>
+                <div class="timeline-body">
+                    <h4>{{ job.position | loc }}</h4>
+                    <div class="org"><a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.name }}</a></div>
+                    <p>{{ job.summary | loc }}</p>
+                    {{ highlights(job.highlights) }}
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if resume.projects %}
+    <section class="section">
+        <h3>{{ t.projects }}</h3>
+        <div class="timeline">
+        {% for project in resume.projects %}
+            <article class="timeline-item">
+                <div class="timeline-dates">{{ date_range(project.start_date, project.end_date, t) }}</div>
+                <div class="timeline-body">
+                    <h4><a href="{{ project.url }}" target="_blank" rel="noopener">{{ project.name }}</a></h4>
+                    <p>{{ project.description | loc }}</p>
+                    {{ highlights(project.highlights) }}
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if resume.volunteer %}
+    <section class="section">
+        <h3>{{ t.volunteer }}</h3>
+        <div class="timeline">
+        {% for vol in resume.volunteer %}
+            <article class="timeline-item">
+                <div class="timeline-dates">{{ date_range(vol.start_date, vol.end_date, t) }}</div>
+                <div class="timeline-body">
+                    <h4>{{ vol.position | loc }}</h4>
+                    <div class="org"><a href="{{ vol.url }}" target="_blank" rel="noopener">{{ vol.organization }}</a></div>
+                    <p>{{ vol.summary | loc }}</p>
+                    {{ highlights(vol.highlights) }}
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if resume.education %}
+    <section class="section">
+        <h3>{{ t.education }}</h3>
+        <div class="timeline">
+        {% for edu in resume.education %}
+            <article class="timeline-item">
+                <div class="timeline-dates">{{ date_range(edu.start_date, edu.end_date, t) }}</div>
+                <div class="timeline-body">
+                    <h4>{{ edu.study_type.value }} &middot; {{ edu.area | loc }}</h4>
+                    <div class="org"><a href="{{ edu.url }}" target="_blank" rel="noopener">{{ edu.institution }}</a></div>
+                    {% if edu.score %}<div class="meta">{{ t.score }} {{ edu.score }}</div>{% endif %}
+                    {% if edu.courses %}<div class="tag-row">{{ tags(edu.courses, "tag") }}</div>{% endif %}
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if resume.skills %}
+    <section class="section">
+        <h3>{{ t.aptitudes }}</h3>
+        <div class="skills-grid">
+        {% for skill in resume.skills %}
+            <div class="skill-card">
+                <div class="skill-head">
+                    <span class="skill-name">{{ skill.name | loc }}</span>
+                    <span class="skill-value">{{ skill.level.value }}</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" style="width: {{ skill.level_percent }}%; background: {{ skill.color }}"></span></div>
+                <div class="tag-row">{{ tags(skill.keywords, "tag") }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if resume.certificates %}
+    <section class="section">
+        <h3>{{ t.certificates }}</h3>
+        {% for cert in resume.certificates %}
+        <div class="entry">
+            <h4><a href="{{ cert.url }}" target="_blank" rel="noopener">{{ cert.name | loc }}</a></h4>
+            <div class="meta">{{ t.issued_by }} {{ cert.issuer }} &middot; {{ cert.date }}</div>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if resume.awards %}
+    <section class="section">
+        <h3>{{ t.awards }}</h3>
+        {% for award in resume.awards %}
+        <div class="entry">
+            <h4>{{ award.title | loc }}</h4>
+            <div class="meta">{{ t.awarded_by }} {{ award.awarder }} &middot; {{ award.date }}</div>
+            <p>{{ award.summary | loc }}</p>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if resume.publications %}
+    <section class="section">
+        <h3>{{ t.publications }}</h3>
+        {% for pub in resume.publications %}
+        <div class="entry">
+            <h4><a href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.name }}</a></h4>
+            <div class="meta">{{ t.published_by }} {{ pub.publisher }} &middot; {{ pub.release_date }}</div>
+            <p>{{ pub.summary | loc }}</p>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    <div class="two-col">
+        {% if resume.languages %}
+        <section class="section">
+            <h3>{{ t.languages }}</h3>
+            <ul class="plain">
+            {% for lang in resume.languages %}
+                <li><strong>{{ lang.language | loc }}</strong> <span class="meta">{{ lang.fluency.value }}</span></li>
+            {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if resume.interests %}
+        <section class="section">
+            <h3>{{ t.interest }}</h3>
+            <ul class="plain">
+            {% for interest in resume.interests %}
+                <li><strong>{{ interest.name | loc }}</strong>
+                {% if interest.keywords %}<div class="tag-row">{{ tags(interest.keywords, "tag") }}</div>{% endif %}</li>
+            {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </div>
+
+    {% if resume.references %}
+    <section class="section">
+        <h3>{{ t.references }}</h3>
+        {% for ref in resume.references %}
+        <div class="entry">
+            <h4>{{ ref.name }}</h4>
+            {% if ref.email %}<div class="meta">{{ ref.email }}</div>{% endif %}
+            <p>{{ ref.reference | loc }}</p>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+</main>

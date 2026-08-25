@@ -1,0 +1,4 @@
+# Dependencias del editor local (no se necesitan para construir el sitio en CI).
+-r requirements.txt
+fastapi>=0.110
+uvicorn[standard]>=0.27

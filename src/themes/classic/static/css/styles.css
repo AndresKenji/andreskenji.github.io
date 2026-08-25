@@ -346,3 +346,56 @@ p {
   padding-left: 20px;
   margin: 0;
 }
+
+/*—————————————————————————
+  10. Secciones adicionales (certificados, proyectos, premios…)
+—————————————————————————*/
+
+.entry {
+  margin-bottom: 10px;
+}
+
+.meta {
+  color: #666;
+  font-size: 13px;
+}
+
+.entry .meta {
+  display: block;
+}
+
+.highlights {
+  margin: 6px 0 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.highlights li {
+  margin-bottom: 3px;
+}
+
+.sidebar .interest li {
+  margin-bottom: 6px;
+}
+
+.sidebar .skill-keywords {
+  margin-top: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+/* El sidebar es angosto: los tags deben poder partirse en varias líneas en vez
+   de desbordarse (`.skill-tag` usa nowrap, que ahí no cabe). */
+.sidebar .skill-tag {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Los summary del JSON traen saltos de línea (una frase por línea); sin esto
+   el navegador los colapsa en un solo bloque de texto. */
+.experience p,
+.entry p,
+.sidebar p {
+  white-space: pre-line;
+}
