@@ -1,12 +1,18 @@
 {
   "basics": {
     "name": "Oscar A. Rodriguez",
-    "label": "Telecommunications Engineer",
+    "label": {
+      "en": "Telecommunications Engineer",
+      "es": "Ingeniero de Telecomunicaciones"
+    },
     "image": "static/img/kenji.png",
     "email": "andres.kenji@outlook.com",
     "phone": "(+57) 301 6679447",
     "url": "https://linkedin.com/in/oarf",
-    "summary": "I’m a Telecommunications Engineer currently working as a Cloud Automation Engineer with a strong focus on DevOps practices. I began my career managing virtualization platforms (VMware, Hyper-V), transitioned into cloud administration with Azure and AWS, and eventually specialized in automation — where I discovered my true passion: coding and optimizing infrastructure.\nI have hands-on experience with Go, Python, PowerShell, and Terraform, and I use these tools to automate cloud deployments, CI/CD pipelines, and infrastructure management. I'm passionate about building reliable, scalable systems and continuously improving developer workflows.\nI enjoy working in collaborative environments and learning from other engineers. Currently, I'm also expanding my skills in web development and data science to bring a broader perspective to problem-solving in DevOps.",
+    "summary": {
+      "en": "I’m a Telecommunications Engineer currently working as a Cloud Automation Engineer with a strong focus on DevOps practices. I began my career managing virtualization platforms (VMware, Hyper-V), transitioned into cloud administration with Azure and AWS, and eventually specialized in automation — where I discovered my true passion: coding and optimizing infrastructure.\nI have hands-on experience with Go, Python, PowerShell, and Terraform, and I use these tools to automate cloud deployments, CI/CD pipelines, and infrastructure management. I'm passionate about building reliable, scalable systems and continuously improving developer workflows.\nI enjoy working in collaborative environments and learning from other engineers. Currently, I'm also expanding my skills in web development and data science to bring a broader perspective to problem-solving in DevOps.",
+      "es": "Soy Ingeniero de Telecomunicaciones, actualmente trabajando como Cloud Automation Engineer con un fuerte enfoque en prácticas DevOps. Comencé mi carrera administrando plataformas de virtualización (VMware, Hyper-V), transicioné hacia la administración cloud con Azure y AWS, y eventualmente me especialicé en automatización — donde descubrí mi verdadera pasión: programar y optimizar infraestructura.\nTengo experiencia práctica con Go, Python, PowerShell y Terraform, y utilizo estas herramientas para automatizar despliegues en la nube, pipelines CI/CD y gestión de infraestructura. Me apasiona construir sistemas confiables y escalables, y mejorar continuamente los flujos de trabajo de desarrollo.\nDisfruto trabajar en ambientes colaborativos y aprender de otros ingenieros. Actualmente, también estoy expandiendo mis habilidades en desarrollo web y ciencia de datos para aportar una perspectiva más amplia a la resolución de problemas en DevOps."
+    },
     "location": {
       "address": "Engativa",
       "postal_code": "CO 111011",
@@ -14,98 +20,206 @@
       "country_code": "CO",
       "region": "Bogotá"
     },
-    "profiles": [{
-      "network": "Twitter",
-      "username": "Kenji_Andres",
-      "url": "https://x.com/kenji_andres"
-    }]
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "Kenji_Andres",
+        "url": "https://x.com/kenji_andres"
+      }
+    ]
   },
-  "work": [{
-    "name": "Cloudnonic",
-    "position": "Cloud Automation Engineer",
-    "url": "https://cloudnonic.com/",
-    "start_date": "2025-09-08",
-    "end_date": "Current",
-    "summary": "Development and maintenance of backend services and RESTful APIs using Python and NestJS, following clean architecture and SOLID principles.\nDesign and implementation of cloud infrastructure on AWS, including EC2, Lambda, S3, RDS, and API Gateway.\nBuilding and optimizing CI/CD pipelines with GitHub Actions and Azure DevOps for automated testing and deployments.\nInfrastructure as Code (IaC) management with Terraform for scalable and reproducible cloud environments.\nCollaboration with cross-functional teams to deliver features, troubleshoot production issues, and improve system reliability.",
-    "highlights":[]
-  },{
-    "name": "Michael Page",
-    "position": "Cloud Automation Engineer",
-    "url": "https://www.michaelpage.com/",
-    "start_date": "2025-03-18",
-    "end_date": "2025-09-08",
-    "summary": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
-    "highlights":[]
-  },{
-    "name": "IFX Networks",
-    "position": "Cloud Data and Automation Engineer",
-    "url": "https://ifxnetworks.com/en/",
-    "start_date": "2022-01-18",
-    "end_date": "2025-03-18",
-    "summary": "Design and implement data pipelines to acquire and transform information, enabling decision-making support.\nApply data analysis techniques to identify patterns and trends, and communicate findings through effective visualizations.\nDevelop automated algorithms and procedures to integrate data from multiple sources and optimize critical business processes.\nIdentify opportunities to collect new data and improve data quality and reliability.",
-    "highlights":[]
-  },{
-    "name": "A Toda Hora S.A.",
-    "position": "Platform Administrator",
-    "url": "https://www.avalvc.com.co/inicio",
-    "start_date": "2022-01-18",
-    "end_date": "2023-01-09",
-    "summary": "Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.\nAutomated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.\nDeployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.",
-    "highlights":[]
-  }],
-  "education": [{
-    "institution": "Universidad Compensar",
-    "url": "https://ucompensar.edu.co/",
-    "area": "Telecommunications Engineering",
-    "study_type": "Bachelor",
-    "start_date": "2015-02-01",
-    "end_date": "2021-12-01",
-    "score": "4.0",
-    "courses": []
-  },{
-    "institution": "Universidad Compensar",
-    "url": "https://ucompensar.edu.co/",
-    "area": "Telecommunications Network Management",
-    "study_type": "Associate",
-    "start_date": "2018-01-01",
-    "end_date": "2020-12-01",
-    "score": "4.0",
-    "courses": []
-  }],
-  "volunteer":[],
+  "work": [
+    {
+      "name": "Cloudnonic",
+      "position": {
+        "en": "Backend Engineer",
+        "es": "Ingeniero Backend"
+      },
+      "url": "https://cloudnonic.com/",
+      "start_date": "2025-09-08",
+      "end_date": null,
+      "summary": {
+        "en": "Development and maintenance of backend services and RESTful APIs using Python and NestJS, following clean architecture and SOLID principles.\nDesign and implementation of cloud infrastructure on AWS, including EC2, Lambda, S3, RDS, and API Gateway.\nBuilding and optimizing CI/CD pipelines with GitHub Actions and Azure DevOps for automated testing and deployments.\nInfrastructure as Code (IaC) management with Terraform for scalable and reproducible cloud environments.\nCollaboration with cross-functional teams to deliver features, troubleshoot production issues, and improve system reliability.",
+        "es": "Desarrollo y mantenimiento de servicios backend y APIs RESTful usando Python y NestJS, siguiendo arquitectura limpia y principios SOLID.\nDiseño e implementación de infraestructura cloud en AWS, incluyendo EC2, Lambda, S3, RDS y API Gateway.\nConstrucción y optimización de pipelines CI/CD con GitHub Actions y Azure DevOps para pruebas y despliegues automatizados.\nGestión de Infraestructura como Código (IaC) con Terraform para ambientes cloud escalables y reproducibles.\nColaboración con equipos multifuncionales para entregar funcionalidades, solucionar problemas en producción y mejorar la confiabilidad del sistema."
+      },
+      "highlights": []
+    },
+    {
+      "name": "Michael Page",
+      "position": {
+        "en": "Cloud Automation Engineer",
+        "es": "Ingeniero de Automatización Cloud"
+      },
+      "url": "https://www.michaelpage.com/",
+      "start_date": "2025-03-18",
+      "end_date": "2025-09-08",
+      "summary": {
+        "en": "Design and deployment of cloud infrastructure, service configuration, and project support across Azure and AWS environments.\nIncident and problem management, change control execution, and capacity planning.\nMonitoring and availability strategy implementation, cost control of cloud platforms, and continuous improvement planning.\nCloud automation using tools such as Python, Go, Terraform, and Azure DevOps.",
+        "es": "Diseño y despliegue de infraestructura cloud, configuración de servicios y soporte de proyectos en ambientes Azure y AWS.\nGestión de incidentes y problemas, ejecución de control de cambios y planificación de capacidad.\nImplementación de estrategias de monitoreo y disponibilidad, control de costos de plataformas cloud y planificación de mejora continua.\nAutomatización cloud utilizando herramientas como Python, Go, Terraform y Azure DevOps."
+      },
+      "highlights": []
+    },
+    {
+      "name": "IFX Networks",
+      "position": {
+        "en": "Cloud Data and Automation Engineer",
+        "es": "Ingeniero de Datos y Automatización Cloud"
+      },
+      "url": "https://ifxnetworks.com/en/",
+      "start_date": "2022-01-18",
+      "end_date": "2025-03-18",
+      "summary": {
+        "en": "Design and implement data pipelines to acquire and transform information, enabling decision-making support.\nApply data analysis techniques to identify patterns and trends, and communicate findings through effective visualizations.\nDevelop automated algorithms and procedures to integrate data from multiple sources and optimize critical business processes.\nIdentify opportunities to collect new data and improve data quality and reliability.",
+        "es": "Diseño e implementación de pipelines de datos para adquirir y transformar información, habilitando el soporte a la toma de decisiones.\nAplicación de técnicas de análisis de datos para identificar patrones y tendencias, comunicando hallazgos a través de visualizaciones efectivas.\nDesarrollo de algoritmos y procedimientos automatizados para integrar datos de múltiples fuentes y optimizar procesos críticos de negocio.\nIdentificación de oportunidades para recolectar nuevos datos y mejorar la calidad y confiabilidad de los datos."
+      },
+      "highlights": []
+    },
+    {
+      "name": "A Toda Hora S.A.",
+      "position": {
+        "en": "Platform Administrator",
+        "es": "Administrador de Plataformas"
+      },
+      "url": "https://www.avalvc.com.co/inicio",
+      "start_date": "2022-01-18",
+      "end_date": "2023-01-09",
+      "summary": {
+        "en": "Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.\nAutomated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.\nDeployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.",
+        "es": "Gestión de infraestructura cloud en AWS y Azure. Mantenimiento y actualización de aplicaciones y microservicios ejecutándose en EKS y AKS.\nAutomatización de procesos usando AWS CLI y Azure CLI a través de pipelines de Azure DevOps.\nDespliegue y actualización de infraestructura usando Infraestructura como Código (IaC) con Terraform."
+      },
+      "highlights": []
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Universidad Compensar",
+      "url": "https://ucompensar.edu.co/",
+      "area": {
+        "en": "Telecommunications Engineering",
+        "es": "Ingeniería de Telecomunicaciones"
+      },
+      "study_type": "Bachelor",
+      "start_date": "2015-02-01",
+      "end_date": "2021-12-01",
+      "score": "4.0",
+      "courses": []
+    },
+    {
+      "institution": "Universidad Compensar",
+      "url": "https://ucompensar.edu.co/",
+      "area": {
+        "en": "Telecommunications Network Management",
+        "es": "Gestión de Redes de Telecomunicaciones"
+      },
+      "study_type": "Associate",
+      "start_date": "2018-01-01",
+      "end_date": "2020-12-01",
+      "score": "4.0",
+      "courses": []
+    }
+  ],
   "awards": [],
   "certificates": [],
   "publications": [],
-  "skills": [{
-    "name": "Programming",
-    "level": "Master",
-    "keywords": ["Python","NestJS","Golang","JavaScript","Microservices","RESTful APIs"]
-  },{
-    "name": "DevOps",
-    "level": "Proficient",
-    "keywords": ["CI/CD","GitHub Actions","Terraform","Docker","Kubernetes","Azure DevOps"]
-  },{
-    "name": "Cloud Computing",
-    "level": "Proficient",
-    "keywords": ["Azure", "AWS"]
-  }],
-  "languages": [{
-    "language": "English",
-    "fluency": "Advanced"
-  },{
-    "language": "Spanish",
-    "fluency": "Native"
-  }],
-  "interests": [{
-    "name": "Technology",
-    "keywords": ["Coding","Hardware"]
-  },{
-    "name": "Programming",
-    "keywords": ["Python","Golang"]
-  },{
-    "name": "Sci-Fi Movies/books",
-    "keywords": ["Star Wars","BTTF", "Lord of the Rings"]
-  }],
+  "skills": [
+    {
+      "name": {
+        "en": "Programming",
+        "es": "Programación"
+      },
+      "level": "Master",
+      "keywords": [
+        "Python",
+        "NestJS",
+        "Golang",
+        "JavaScript",
+        {
+          "en": "Microservices",
+          "es": "Microservicios"
+        },
+        {
+          "en": "RESTful APIs",
+          "es": "APIs RESTful"
+        }
+      ],
+      "color": "#0070c0"
+    },
+    {
+      "name": "DevOps",
+      "level": "Proficient",
+      "keywords": [
+        "CI/CD",
+        "GitHub Actions",
+        "Terraform",
+        "Docker",
+        "Kubernetes",
+        "Azure DevOps"
+      ],
+      "color": "#0070c0"
+    },
+    {
+      "name": "Cloud Computing",
+      "level": "Proficient",
+      "keywords": [
+        "Azure",
+        "AWS"
+      ],
+      "color": "#0070c0"
+    }
+  ],
+  "languages": [
+    {
+      "language": {
+        "en": "English",
+        "es": "Inglés"
+      },
+      "fluency": "Advanced"
+    },
+    {
+      "language": {
+        "en": "Spanish",
+        "es": "Español"
+      },
+      "fluency": "Native"
+    }
+  ],
+  "interests": [
+    {
+      "name": {
+        "en": "Technology",
+        "es": "Tecnología"
+      },
+      "keywords": [
+        {
+          "en": "Coding",
+          "es": "Programación"
+        },
+        "Hardware"
+      ]
+    },
+    {
+      "name": {
+        "en": "Programming",
+        "es": "Programación"
+      },
+      "keywords": [
+        "Python",
+        "Golang"
+      ]
+    },
+    {
+      "name": {
+        "en": "Sci-Fi Movies/books",
+        "es": "Películas/Libros Sci-Fi"
+      },
+      "keywords": [
+        "Star Wars",
+        "BTTF",
+        "Lord of the Rings"
+      ]
+    }
+  ],
   "references": [],
   "projects": []
 }

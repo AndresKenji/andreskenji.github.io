@@ -1,0 +1,17 @@
+{# Macros compartidos entre temas. El filtro `loc` lo registra render.py
+   ligado al idioma que se está renderizando. #}
+
+{# Rango de fechas: end_date en null significa "sigo aquí". #}
+{% macro date_range(start, end, t) -%}
+{{ start }} &rarr; {{ end if end else t.present }}
+{%- endmacro %}
+
+{# Lista de highlights; no renderiza nada si viene vacía. #}
+{% macro highlights(items) -%}
+{%- if items %}<ul class="highlights">{% for item in items %}<li>{{ item | loc }}</li>{% endfor %}</ul>{% endif -%}
+{%- endmacro %}
+
+{# Etiquetas de keywords. #}
+{% macro tags(items, css_class="skill-tag") -%}
+{%- for item in items %}<span class="{{ css_class }}">{{ item | loc }}</span>{% endfor -%}
+{%- endmacro %}

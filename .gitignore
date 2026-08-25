@@ -156,3 +156,9 @@ cython_debug/
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
 
+# Sitio generado por main.py — se publica como artifact de GitHub Pages,
+# no se versiona.
+docs/
+
+# Backup de la migración a un solo resume.json bilingüe (one-shot).
+src/data/_legacy/
