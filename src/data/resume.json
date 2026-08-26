@@ -73,21 +73,6 @@
         "es": "Diseño e implementación de pipelines de datos para adquirir y transformar información, habilitando el soporte a la toma de decisiones.\nAplicación de técnicas de análisis de datos para identificar patrones y tendencias, comunicando hallazgos a través de visualizaciones efectivas.\nDesarrollo de algoritmos y procedimientos automatizados para integrar datos de múltiples fuentes y optimizar procesos críticos de negocio.\nIdentificación de oportunidades para recolectar nuevos datos y mejorar la calidad y confiabilidad de los datos."
       },
       "highlights": []
-    },
-    {
-      "name": "A Toda Hora S.A.",
-      "position": {
-        "en": "Platform Administrator",
-        "es": "Administrador de Plataformas"
-      },
-      "url": "https://www.avalvc.com.co/inicio",
-      "start_date": "2022-01-18",
-      "end_date": "2023-01-09",
-      "summary": {
-        "en": "Managed cloud infrastructure in AWS and Azure. Maintained and updated applications and microservices running on EKS and AKS.\nAutomated processes using AWS CLI and Azure CLI through Azure DevOps pipelines.\nDeployed and updated infrastructure using Infrastructure as Code (IaC) with Terraform.",
-        "es": "Gestión de infraestructura cloud en AWS y Azure. Mantenimiento y actualización de aplicaciones y microservicios ejecutándose en EKS y AKS.\nAutomatización de procesos usando AWS CLI y Azure CLI a través de pipelines de Azure DevOps.\nDespliegue y actualización de infraestructura usando Infraestructura como Código (IaC) con Terraform."
-      },
-      "highlights": []
     }
   ],
   "volunteer": [],
